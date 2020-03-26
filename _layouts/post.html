@@ -13,8 +13,17 @@ layout: default
 	  {%- if page.author -%}
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
 	  {%- endif -%}
+	<div class="tags">
+		{% assign sortedCategories = page.categories | sort %}
+		{% for category in sortedCategories %}
+			<span class="tag">
+				<a href="/category/">#{{ category }}</a>
+			</span>
+		{% endfor %}
+	</div>
     </p>
   </header>
+
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
@@ -42,5 +51,25 @@ layout: default
 	  }
 	  });
   </script>
+
+  <div class="related">
+	<h3>Related Posts</h3>
+	{% assign firstCategory = page.categories | first %}
+	{% assign relatedCount = 0 %}
+	{% for related in site.categories[firstCategory] %}
+		{% unless page.permalink == related.permalink %}
+			{% assign relatedCount = relatedCount | plus:1 %}
+			<p>
+			<a href="{{related.permalink}}">{{related.title}}</a>
+			</p>
+		{% endunless %}
+
+		{% if relatedCount == 5 %}
+			{% break %}
+		{% endif %}
+	{% else %}
+		<p>No related posts.</p>
+	{% endfor %}
+  </div>
 
 </article>

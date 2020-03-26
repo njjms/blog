@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "Finally Understanding transformations in linear models"
+title:  "Finally understanding transformations in linear models"
 date:   2019-02-25 07:07:28 +0000
+permalink: /statistics/
 categories: statistics
 ---
 

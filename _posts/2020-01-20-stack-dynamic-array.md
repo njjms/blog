@@ -2,6 +2,7 @@
 layout: post
 title: "Adventures in Data Structures Vol. 2: $TACKED (ft. Dynamic Arrays)"
 date: 2020-01-15 010:07:28 +0000
+permalink: /cs/
 categories: cs
 ---
 

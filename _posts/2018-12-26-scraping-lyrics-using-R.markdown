@@ -2,7 +2,7 @@
 layout: post
 title:  "Scraping Lyrics with R"
 date:   2018-12-26 07:07:28 +0000
-categories: jekyll update
+categories: ds
 ---
 
 This winter break I got to see one of my favorite bands **The Menzingers** in their hometown of Scranton PA for their annual holiday show.
@@ -35,14 +35,14 @@ What I eventually want is a vector of these individual URLs, so to begin I will 
 I am more used to XPath, so I will use that.
 The output of this is a list of XML elements that I can grab attributes from.
 
-```
+{% highlight r %}
 library(rvest)
 main_url <- "https://www.azlyrics.com/m/menzingers.html"
 
 zings <- read_html(main_url)
 
 zings %>% html_nodes(xpath = '//*[@id="listAlbum"]/a') -> songs
-```
+{% endhighlight %}
 
 To extract the actual URL links, we note that the link text are essentially the same except for the end.
 This is great for us since the `href` attribute in each of the elements in our `songs` XML list only contains the last part of the link.
@@ -50,7 +50,7 @@ We will simply strip the bits of the `href` that we don't need and paste the res
 
 We can use the `html_attr()` function to grab the value of an attribute.
 
-```
+{% highlight r %}
 base_url <- "https://www.azlyrics.com/lyrics/menzingers/"
 
 songs %>% html_attr(name = "href") -> links
@@ -58,12 +58,12 @@ songs %>% html_attr(name = "href") -> links
 links <- links[!is.na(links)]
 links <- gsub("../lyrics/menzingers/", "", links)
 song_links <- paste0(base_url, links)
-```
+{% endhighlight %}
 
 Now that we have a vector of URLs for the individual song lyrics, we can write a function that will return the body of the text.
 For this website, mine looks like the following:
 
-```
+{% highlight r %}
 get_lyrics <- function(page_url) {
   page_url %>% read_html() %>% html_nodes(xpath = '/html/body/div[3]/div/div[2]/div[5]') %>% 
     html_text() %>% { gsub("\r", "", .) } %>%
@@ -73,7 +73,7 @@ get_lyrics <- function(page_url) {
   Sys.sleep(10)
   return(body)
 }
-```
+{% endhighlight %}
 
 Couple things here: first, we have to make sure we use some kind of `sleep()` function since a lot of sites will block us if we request from their site to quickly!
 Second, I make use of the `html_text()` function to grab just the text of an HTML node as well as `stringr::str_trim()`.
