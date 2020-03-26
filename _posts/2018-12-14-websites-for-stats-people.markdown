@@ -1,18 +1,17 @@
 ---
 layout: post
-title:  "Setting up websites: How I did it as a non-engineer!"
+title:  "Setting up a blog with Jekyll and Ubuntu (for non-engineers)"
 date:   2018-12-14 23:07:28 +0000
-categories: jekyll update
+categories: linux
 ---
 
-Having completed my first quarter of graduate school, I've met some really 
-fascinating and brilliant people. I consider myself lucky to be associated with
-some really genuine individuals -- both students and faculty, that is -- who care about what they do.
+Having completed my first quarter of graduate school, I've met some really fascinating and brilliant people.
+ I consider myself lucky to be associated with some really genuine individuals -- both students and faculty -- who care about what they do.
 
 Statisticians by nature I think often tread a line between theory and application.
-In my cohort, everyone has a really strong background in math (even if they are too
-humble to admit it!) and everyone has had at least some exposure to computer science. That being said, people come in with different levels of programming experience.
-One thing that some folks have asked me about though is how to set up a website.
+In my cohort, everyone has a really strong background in math (even if they are too humble to admit it!) and everyone has had at least some exposure to computer science.
+ That being said, people come in with different levels of programming experience.
+One thing that some folks have asked me about though is how to set up a blog.
 
 ## I am not an expert
 
@@ -33,13 +32,18 @@ Some other reasons which I think are relevant to grad students:
 
 ## Couple different ways to do this
 
-I think a lot of folks use a service like Wix (i.e. I JUST MADE THIS DOPE WEBSITE WITH WIX LEMME SHOW YE HOW I DID IT *lip bite*) or Weebly (which for the record I think is a hilarious name for a company). Totally nothing wrong with that. 
+I think a lot of folks use a service like Wix (i.e. "I just made this **dope** website with WIX *lip bite*") or Weebly (which for the record I think is a hilarious name for a company).
+Totally nothing wrong with that. 
 I've never done it because I think those sites look too polished, but I'm sure it's more or less straightforward.
-I wanted my websites to have more of a campy, geocities vibe.
+I wanted my websites to have more of a campy, geocities (i.e. **bad**) vibe.
 
 ## Flask
 
-This is how I made my first website. It was perfect aesthetics-wise, it was a shitty static site with bare HTML and a dash of CSS and light dusting of early 90s gifs. You can host it on something like Heroku, which is what I did. Heroku is pretty straightforward, I have nothing against the company. For a beginner like me, they did quite a bit of handholding and it was much appreciated. However, the steps for logging into Heroku (I used their CLI) and then pushing your code changes was kind of hard to remember. So I decided to try something that was even more straightforward in my opion.
+This is how I made my first website. It was perfect aesthetics-wise, it was a shitty static site with bare HTML and a dash of CSS and light dusting of early 90s gifs.
+You can host it on something like Heroku, which is what I did. Heroku is pretty straightforward, I have nothing against the company.
+For a beginner like me, they did quite a bit of handholding and it was much appreciated.
+However, the steps for logging into Heroku (I used their CLI) and then pushing your code changes was kind of hard to remember.
+So I decided to try something that was even more straightforward in my opion.
 
 ## Jekyll on a VPS
 
@@ -73,4 +77,5 @@ There should already be an example post in there which you can copy.
 Once you have built your jekyll site using `bundle` all that's left to do is restart nginx, which you can do using `sudo nginx -s reload`!
 
 Now all you have to really worry about is getting a cool domain name.
+I purchased mine from `namecheap` and then configured the advanced DNS options to point to the IP address of my VPS.
 

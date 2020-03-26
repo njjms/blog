@@ -1,8 +1,7 @@
 ---
 layout: post
-title: "Spring Cleaning! Slimming my .vimrc"
+title: "Spring cleaning my .vimrc"
 date: 2019-02-20 07:06:22 +0000
-permalink: /vim/
 categories: vim
 ---
 
@@ -23,51 +22,3 @@ This keeps everything on your left hand and at least for my workstation it's pre
 One of the big benefits for me in using standard mappings for me is that I can now move pretty easily between RStudio, Overleaf, other apps that have Vim keybindings, and editing text in the terminal.
 Muscle memory is important and the more practice you have with easily transferrable keybindings, the better off I think you will be in the long run.
 
-```
-"  __   __   __     __    __     ______     ______    
-"  /\ \ / /  /\ \   /\ "-./  \   /\  == \   /\  ___\   
-"  \ \ \'/   \ \ \  \ \ \-./\ \  \ \  __<   \ \ \____  
-"   \ \__|    \ \_\  \ \_\ \ \_\  \ \_\ \_\  \ \_____\ 
-"    \/_/      \/_/   \/_/  \/_/   \/_/ /_/   \/_____/
-
-syntax enable
-set relativenumber number
-set tabstop=4
-set shiftwidth=4
-set numberwidth=4
-
-set nocompatible
-set path+=**
-set wildmenu
-
-" Mappings
-
-nnoremap GO :Goyo<CR>
-nnoremap NO :Goyo!<CR>
-nnoremap % v%
-vnoremap <Tab> <Esc>
-
-" Plugins
-
-call plug#begin('~/.vim/plugged')
-
-	Plug 'junegunn/seoul256.vim'
-	Plug 'junegunn/goyo.vim'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-
-call plug#end()
-
-" Airline config
-
-let g:airline_theme='base16'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-" colors
-
-let g:seoul256_background = 233
-colo seoul256
-
-set background=light
-```
