@@ -2,6 +2,7 @@
 layout: post
 title: "Spring Cleaning! Slimming my .vimrc"
 date: 2019-02-20 07:06:22 +0000
+permalink: /vim/
 categories: vim
 ---
 

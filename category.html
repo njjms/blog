@@ -1,0 +1,89 @@
+---
+layout: page
+permalink: /category/
+title: Categories
+---
+
+<h2>Statistics</h2>
+<div id="statistics">
+	{% for post in site.categories.statistics %}
+	<p></p>
+	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	<p></p>
+	{% else %}
+		No posts found.
+	{% endfor %}
+</div>
+
+<h2>Data Science</h2>
+<div id="ds">
+	{% for post in site.categories.ds %}
+	<p>
+	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	</p>
+	{% else %}
+		<p></p>
+		No posts found.
+		<p></p>
+	{% endfor %}
+</div>
+
+<h2>CS</h2>
+
+<div id="cs">
+	{% for post in site.categories.cs %}
+	<p></p>
+	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	<p></p>
+	{% else %}
+		No posts found.
+	{% endfor %}
+</div>
+
+<h2>Vim</h2>
+
+<div id="vim">
+	{% for post in site.categories.vim %}
+	<p></p>
+	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	<p></p>
+	{% else %}
+		No posts found.
+	{% endfor %}
+</div>
+
+<h2>GNU/Linux</h2>
+
+<div id="linux">
+	{% for post in site.categories.linux %}
+	<p></p>
+	<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	<p></p>
+	{% else %}
+		No posts found.
+	{% endfor %}
+</div>
+
+
+<!--
+<div id="archives">
+{% for category in site.categories %}
+  <div class="archive-group">
+	{% capture category_name %}
+	  {{category | first}}
+	{% endcapture %}
+	<div id="#{{ category_name | slugize }}"></div>
+	<p></p>
+
+	<h3 class="category-head">{{ category_name }}</h3>
+	<a name="{{ category_name | slugize }}"></a>
+	{% for post in site.categories.category_name %}
+		Hello {{ post.title }}
+	<article class="archive-item">
+		<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	</article>
+	{% endfor %}
+  </div>
+{% endfor %}
+</div>
+-->

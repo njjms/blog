@@ -6,11 +6,11 @@ permalink: /about/
 
 Hi, my name is Nick.
 
-I am a current MS student in statistics at Oregon State University.
+I am a current **MSc student in statistics at Oregon State University**.
 Before that, I worked for a few years and before that I went to Rutgers University for my BA.
-In addition to studying, I also teach at OSU as a TA which I actually really enjoy.
+In addition to studying, I also teach at OSU as a TA which I really enjoy.
 
-My academic interests are pretty applied.
+My academic work is pretty applied.
 My statistical interests are in bioinformatics, statistical genomics, and spatial statistics.
 I mainly do work in R, but I'm also really into GNU/Linux and other terminal stuff, especially Vim and shell scripting.
 I'm also trying to brush up on my Python skills, specifically for data science and scientific computing.

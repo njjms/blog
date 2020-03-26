@@ -2,6 +2,7 @@
 layout: post
 title:  "Where I use Vim as a stats person"
 date:   2019-01-13 07:07:28 +0000
+permalink: /vim/
 categories: vim
 ---
 

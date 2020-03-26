@@ -4,3 +4,5 @@ _site
 *.pdf
 *.png
 *.jpg
+*.swp
+*.swo
