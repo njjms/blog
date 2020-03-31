@@ -52,24 +52,52 @@ layout: default
 	  });
   </script>
 
+<!--
   <div class="related">
-	<h3>Related Posts</h3>
-	{% assign firstCategory = page.categories | first %}
+	{% assign firstCategory = page.categories %}
+	<h3>Related Posts in {{ firstCategory }}</h3>
 	{% assign relatedCount = 0 %}
 	{% for related in site.categories[firstCategory] %}
-		{% unless page.permalink == related.permalink %}
-			{% assign relatedCount = relatedCount | plus:1 %}
-			<p>
-			<a href="{{related.permalink}}">{{related.title}}</a>
-			</p>
-		{% endunless %}
-
-		{% if relatedCount == 5 %}
+	% assign relatedCount = relatedCount | plus:1 %}
+		<p>
+		{{related.title}}
+		</p>
+		{% if relatedCount > 5 %}
 			{% break %}
 		{% endif %}
 	{% else %}
 		<p>No related posts.</p>
 	{% endfor %}
   </div>
+-->
+
+<div class="related">
+	{% for category in page.categories %}
+		{% assign moreThanOneInCategory = false %}
+		{% assign posts = site.categories[category] %}
+
+		{% for post in posts %}
+			{% if forloop.length > 1 %}
+				{% assign moreThanOneInCategory = true %}
+			{% endif %}
+		{% endfor %}
+
+		{% if moreThanOneInCategory == true %}
+			<div class="related-posts">
+				<h3>Other posts in "{{ category }}"</h3>
+
+				<ul>
+					{% for ps in posts %}
+						{% unless ps.url == page.url %}
+						<li>
+							<a href="{{ps.url | prepend: site.baseurl}}">{{ ps.title }}</a>
+						</li>
+						{% endunless %}
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>
 
 </article>

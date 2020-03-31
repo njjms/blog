@@ -5,7 +5,7 @@ permalink: /notes/
 ---
 Here are some of my class notes and assignments from Oregon State that are mostly for my benefit, although you are feel free to peruse them :)
 
-### Reviews
+### Class Reviews
 
 [Statistical Methods 1](/assets/methods1notes.pdf)
 
@@ -14,6 +14,18 @@ Here are some of my class notes and assignments from Oregon State that are mostl
 [Statistical Methods 3](/assets/553_final_review.pdf)
 
 [Quantitative Genomics](/assets/genomics_notes.pdf)
+
+### Statistical Genomics
+
+[MDS for large genomic data](/assets/592_literature_report_1.pdf)
+
+[Optimal rare variant tests in sequencing association studies](/assets/592_literature_report_2.pdf)
+
+[CAMERA competitive gene set test](/assets/592_literature_report_3.pdf)
+
+[Microbiome analysis in gastropods using metagenomeSeq](/assets/592_midterm_report.pdf)
+
+[Predicting coral bleaching using glmmLasso](/assets/592_final_report.pdf)
 
 ### Linear Regression
 
@@ -83,3 +95,20 @@ Here are some of my class notes and assignments from Oregon State that are mostl
 
 [Ordinal Regression](/assets/623ass6.pdf)
 
+### System Administration
+
+[Homework 1: ](/assets/sysadmin/homework1-key.pdf)
+
+[Homework 2: ](/assets/sysadmin/homework2-key.pdf)
+
+[Homework 3: ](/assets/sysadmin/homework3-key.pdf)
+
+[Homework 4: ](/assets/sysadmin/homework4-key.pdf)
+
+[Homework 5: ](/assets/sysadmin/homework5-key.pdf)
+
+[Project 1: ](/assets/sysadmin/project1-key.pdf)
+
+[Project 2: ](/assets/sysadmin/project2-key.pdf)
+
+[Project 3: ](/assets/sysadmin/project3-key.pdf)
