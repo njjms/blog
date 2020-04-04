@@ -21,9 +21,9 @@ $
 
 # Command Line History (newest to oldest):
 :wq
-|2,0,1585965955,,"wq"
+|2,0,1585970093,,"wq"
 :w
-|2,0,1585965953,,"w"
+|2,0,1585970092,,"w"
 :Vex
 |2,0,1585965899,,"Vex"
 :bd
@@ -66,13 +66,19 @@ $
 # Debug Line History (newest to oldest):
 
 # Registers:
+"0	LINE	0
+	*.png
+|3,0,0,1,1,0,1585970084,"*.png"
 ""1	LINE	0
-	author: Nick Sun
-|3,1,1,1,1,0,1585965918,"author: Nick Sun"
+	*.jpg
+|3,1,1,1,1,0,1585970092,"*.jpg"
 "2	LINE	0
-	<img src="/assets/trees4seasons.gif">
-|3,0,2,1,1,0,1585965686,"<img src=\"/assets/trees4seasons.gif\">"
+	author: Nick Sun
+|3,0,2,1,1,0,1585965918,"author: Nick Sun"
 "3	LINE	0
+	<img src="/assets/trees4seasons.gif">
+|3,0,3,1,1,0,1585965686,"<img src=\"/assets/trees4seasons.gif\">"
+"4	LINE	0
 	Here are some of my class notes and assignments from Oregon State that are mostly for my benefit, although you are feel free to peruse them :)
 	
 	### Class Reviews
@@ -123,129 +129,93 @@ $
 	
 	[Contrasts and PROC MULTTEST](/assets/553hw3.pdf)
 	
-|3,0,3,1,50,0,1585873559,"Here are some of my class notes and assignments from Oregon State that are mostly for my benefit, although you are feel free to peruse them :)","","### Class Reviews","","[Statistical Methods 1](/assets/methods1notes.pdf)","","[Statistical Methods 2](/assets/552_final_review.pdf)","","[Statistical Methods 3](/assets/553_final_review.pdf)","","[Quantitative Genomics](/assets/genomics_notes.pdf)","","### Statistical Genomics","",>67
+|3,0,4,1,50,0,1585873559,"Here are some of my class notes and assignments from Oregon State that are mostly for my benefit, although you are feel free to peruse them :)","","### Class Reviews","","[Statistical Methods 1](/assets/methods1notes.pdf)","","[Statistical Methods 2](/assets/552_final_review.pdf)","","[Statistical Methods 3](/assets/553_final_review.pdf)","","[Quantitative Genomics](/assets/genomics_notes.pdf)","","### Statistical Genomics","",>67
 |<"[MDS for large genomic data](/assets/592_literature_report_1.pdf)","","[Optimal rare variant tests in sequencing association studies](/assets/592_literature_report_2.pdf)","","[CAMERA competitive gene set test](/assets/592_literature_report_3.pdf)","","[Microbiome analysis in gastropods using metagenomeSeq](/assets/592_midterm_report.pdf)","","[Predicting coral bleaching using glmmLasso](/assets/592_final_report.pdf)","","### Linear Regression","",>45
 |<"[Initial Data Analysis](/assets/552hw1.pdf)","","[Algebra Behind Regression](/assets/552hw2.pdf)","","[Model Interpretations](/assets/552hw3.pdf)","","[More Model Interpretations](/assets/552hw5.pdf)","","[Nike Vaporflys and Faraway 5.1](/assets/552hw6.pdf)","","[Diagnostics and Plots](/assets/552hw7.pdf)","","[Weighted Least Squares and Lack of Fit](/assets/552hw8.pdf)","","[Regularized Regression](/assets/552hw9.pdf)","","### Experimental Design","",>46
 |<"[PROC GLM and PROC PLAN](/assets/553hw1.pdf)","","[ANOVA](/assets/553hw2.pdf)","","[Contrasts and PROC MULTTEST](/assets/553hw3.pdf)",""
-"4	LINE	0
-	layout: page
-|3,0,4,1,1,0,1585873161,"layout: page"
 "5	LINE	0
 	layout: page
-|3,0,5,1,1,0,1585873027,"layout: page"
+|3,0,5,1,1,0,1585873161,"layout: page"
 "6	LINE	0
-	## e. 
-|3,0,6,1,1,0,1585872562,"## e. "
+	layout: page
+|3,0,6,1,1,0,1585873027,"layout: page"
 "7	LINE	0
-	--- 
-|3,0,7,1,1,0,1585870596,"--- "
+	## e. 
+|3,0,7,1,1,0,1585872562,"## e. "
 "8	LINE	0
-	
-|3,0,8,1,1,0,1585855326,""
+	--- 
+|3,0,8,1,1,0,1585870596,"--- "
 "9	LINE	0
-	Something that I've finally had to do now that I'm in my last quarter of my MSc is get my LaTeX environment set up.
-	I've somehow managed to make it this far in graduate school with only markdown and its mathJaX support, but now that I'll be juggling all kinds of references, it's probably a good idea to finally learn some lay-tecks.
-	Plus, I'm always looking for an actual productive excuse to mess around with my .vimrc!
 	
-	# Setup Goals
-	
-	In the past, I've used `Overleaf` as my TeX editor which was awesome since I could basically grab other people's templates.
-	Also, since it's in the cloud, I could edit my files from anywhere with an internet connection.
-	However, I don't want to rely on Overleaf for my MSc report for the following reasons:
-	
-	+ While Overleaf does have a Vim mode, it doesn't have all the features that even base Vim does (for example, all the nice autocompletion functions or custom mappings), much less the features found in vim plugins
-	+ I've personally experienced a lot of issues with Overleaf being down at inopportune times, so my productivity would really be at the mercy of some unreliable server
-	272
-<+ Since the pandemic lockdown closed my department, there is really no reason for me to leave my apartment so there's no advantage in having my TeX douments in the cloud. It's more efficient for me to have a local TeX repo and then push everything to github to save it.
-	
-	I wanted a TeX setup that was similar in functionality and appearance to Overleaf, namely a text editor (in my case, vim) and a pdf reader.
-	When edits were made to the .tex file, the file could be recompiled **without leaving** any applications and appear in the reader.
-	I also wanted the reader to have basic functionality, like scrolling, zooming, search, etc.
-	
-	While all the cool kids love automatic TeX compilation as they are editing, I was fine with manually executing compilation, preferably when saving my .tex file using `:w`.
-	
-	# Ingredients
-	
-	After a day of [finagling](www.merriam-webster.com/dictionary/finagle), my set up is actually at a place that I really like and I think will serve me pretty well in the next 10 weeks.
-	Here's all the ingredients that I used to bake this savory text formatting brioche:
-	
-	+ vim with the the excellent [vimtex](https://github.com/lervag/vimtex) plugin
-	+ [zathura](https://pwmt.org/projects/zathura/), a pdf reader that supports a lot of things, including auto reloading
-	+ [latexmk](https://mg.readthedocs.io/latexmk.html) for compilation
-	+ and since I use WSL, I'll also need an X server like [Xming](https://sourceforge.net/projects/xming/)
-	
-	| ![text_setup.PNG](/assets/tex_setup.PNG) |
-	|:--:|
-	| *zathura (in xming) and vim working together in WSL!* |
-	
-	# Installation
-	
-	This should be pretty straightforward if you're doing everything in the terminal.
-	To get zathura and latexmk, you can type the following right into the shell if you're on a Debian OS (I use Ubuntu).
-	
-	{% highlight bash %}
-	sudo apt install zathura
-	sudo apt install latexmk
-	{% endhighlight %}
-	
-	Then for vim, use your favorite plugin manager (I use vim-plug since I am otaku for Junegunn Choi) to download vimtex.
-	
-	# Setup
-	
-	Now we have all the pieces... how to we assemble them into what we need?
-	
-|3,0,9,1,50,0,1585854058,"Something that I've finally had to do now that I'm in my last quarter of my MSc is get my LaTeX environment set up.","I've somehow managed to make it this far in graduate school with only markdown and its mathJaX support, but now that I'll be juggling all kinds of references, it's probably a good idea to finally learn some lay-tecks.","Plus, I'm always looking for an actual productive excuse to mess around with my .vimrc!","",>15
-|<"# Setup Goals","","In the past, I've used `Overleaf` as my TeX editor which was awesome since I could basically grab other people's templates.","Also, since it's in the cloud, I could edit my files from anywhere with an internet connection.","However, I don't want to rely on Overleaf for my MSc report for the following reasons:","",>214
-|<"+ While Overleaf does have a Vim mode, it doesn't have all the features that even base Vim does (for example, all the nice autocompletion functions or custom mappings), much less the features found in vim plugins","+ I've personally experienced a lot of issues with Overleaf being down at inopportune times, so my productivity would really be at the mercy of some unreliable server",>271
-|<"+ Since the pandemic lockdown closed my department, there is really no reason for me to leave my apartment so there's no advantage in having my TeX douments in the cloud. It's more efficient for me to have a local TeX repo and then push everything to github to save it.","","I wanted a TeX setup that was similar in functionality and appearance to Overleaf, namely a text editor (in my case, vim) and a pdf reader.",>132
-|<"When edits were made to the .tex file, the file could be recompiled **without leaving** any applications and appear in the reader.","I also wanted the reader to have basic functionality, like scrolling, zooming, search, etc.","","While all the cool kids love automatic TeX compilation as they are editing, I was fine with manually executing compilation, preferably when saving my .tex file using `:w`.","","# Ingredients","",>185
-|<"After a day of [finagling](www.merriam-webster.com/dictionary/finagle), my set up is actually at a place that I really like and I think will serve me pretty well in the next 10 weeks.","Here's all the ingredients that I used to bake this savory text formatting brioche:","","+ vim with the the excellent [vimtex](https://github.com/lervag/vimtex) plugin","+ [zathura](https://pwmt.org/projects/zathura/), a pdf reader that supports a lot of things, including auto reloading",>69
-|<"+ [latexmk](https://mg.readthedocs.io/latexmk.html) for compilation","+ and since I use WSL, I'll also need an X server like [Xming](https://sourceforge.net/projects/xming/)","","| ![text_setup.PNG](/assets/tex_setup.PNG) |","|:--:|","| *zathura (in xming) and vim working together in WSL!* |","","# Installation","","This should be pretty straightforward if you're doing everything in the terminal.",>118
-|<"To get zathura and latexmk, you can type the following right into the shell if you're on a Debian OS (I use Ubuntu).","","{% highlight bash %}","sudo apt install zathura","sudo apt install latexmk","{% endhighlight %}","","Then for vim, use your favorite plugin manager (I use vim-plug since I am otaku for Junegunn Choi) to download vimtex.","","# Setup","","Now we have all the pieces... how to we assemble them into what we need?",""
+|3,0,9,1,1,0,1585855326,""
 "q@	CHAR	0
 	Ea 2000jj0
 |3,2,26,0,1,0,1585873139,"Ea 2000jj0"
 "-	CHAR	0
-	Oregon State Statistical Theory Comprehensive Exams 2000-Present
-|3,0,36,0,1,0,1585955941,"Oregon State Statistical Theory Comprehensive Exams 2000-Present"
+	png
+|3,0,36,0,1,0,1585970087,"png"
 
 # File marks:
-'0  3  0  ~/about.md
-|4,48,3,0,1585965955,"~/about.md"
-'1  7  0  ~/index.md
-|4,49,7,0,1585965717,"~/index.md"
-'2  1025  0  ~/comps.md
-|4,50,1025,0,1585956149,"~/comps.md"
-'3  62  0  ~/comps.md
-|4,51,62,0,1585956149,"~/comps.md"
-'4  3  0  ~/assets/theory_comps/comps
-|4,52,3,0,1585956047,"~/assets/theory_comps/comps"
-'5  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,53,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
-'6  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,54,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
-'7  99  0  ~/notes.md
-|4,55,99,0,1585935746,"~/notes.md"
-'8  10  32  ~/notes.md
-|4,56,10,32,1585935549,"~/notes.md"
+'0  6  0  ~/.gitignore
+|4,48,6,0,1585970093,"~/.gitignore"
+'1  3  0  ~/about.md
+|4,49,3,0,1585965955,"~/about.md"
+'2  7  0  ~/index.md
+|4,50,7,0,1585965717,"~/index.md"
+'3  1025  0  ~/comps.md
+|4,51,1025,0,1585956149,"~/comps.md"
+'4  62  0  ~/comps.md
+|4,52,62,0,1585956149,"~/comps.md"
+'5  3  0  ~/assets/theory_comps/comps
+|4,53,3,0,1585956047,"~/assets/theory_comps/comps"
+'6  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,54,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+'7  154  0  ~/_posts/2020-02-10-blink-nlp.md
+|4,55,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
+'8  99  0  ~/notes.md
+|4,56,99,0,1585935746,"~/notes.md"
 '9  10  32  ~/notes.md
 |4,57,10,32,1585935549,"~/notes.md"
 
 # Jumplist (newest first):
+-'  6  0  ~/.gitignore
+|4,39,6,0,1585970093,"~/.gitignore"
+-'  1  0  ~/.gitignore
+|4,39,1,0,1585970075,"~/.gitignore"
+-'  3  0  ~/about.md
+|4,39,3,0,1585965955,"~/about.md"
 -'  3  0  ~/about.md
 |4,39,3,0,1585965955,"~/about.md"
 -'  8  0  ~/assets
 |4,39,8,0,1585965833,"~/assets"
+-'  8  0  ~/assets
+|4,39,8,0,1585965833,"~/assets"
+-'  1  0  ~/assets/theory_comps_notes.Rmd
+|4,39,1,0,1585965826,"~/assets/theory_comps_notes.Rmd"
 -'  1  0  ~/assets/theory_comps_notes.Rmd
 |4,39,1,0,1585965826,"~/assets/theory_comps_notes.Rmd"
 -'  7  0  ~/index.md
 |4,39,7,0,1585965717,"~/index.md"
 -'  7  0  ~/index.md
 |4,39,7,0,1585965717,"~/index.md"
+-'  7  0  ~/index.md
+|4,39,7,0,1585965717,"~/index.md"
+-'  7  0  ~/index.md
+|4,39,7,0,1585965717,"~/index.md"
 -'  1  0  ~/index.md
 |4,39,1,0,1585965609,"~/index.md"
 -'  1  0  ~/index.md
 |4,39,1,0,1585965609,"~/index.md"
+-'  1  0  ~/index.md
+|4,39,1,0,1585965609,"~/index.md"
+-'  1  0  ~/index.md
+|4,39,1,0,1585965609,"~/index.md"
+-'  1025  0  ~/comps.md
+|4,39,1025,0,1585956149,"~/comps.md"
+-'  62  0  ~/comps.md
+|4,39,62,0,1585956149,"~/comps.md"
+-'  62  0  ~/comps.md
+|4,39,62,0,1585956149,"~/comps.md"
 -'  1025  0  ~/comps.md
 |4,39,1025,0,1585956149,"~/comps.md"
 -'  62  0  ~/comps.md
@@ -258,6 +228,12 @@ $
 |4,39,1,0,1585956146,"~/comps.md"
 -'  1  0  ~/comps.md
 |4,39,1,0,1585956146,"~/comps.md"
+-'  1  0  ~/comps.md
+|4,39,1,0,1585956146,"~/comps.md"
+-'  1  0  ~/comps.md
+|4,39,1,0,1585956146,"~/comps.md"
+-'  1  0  ~/comps.md
+|4,39,1,0,1585956146,"~/comps.md"
 -'  3  0  ~/assets/theory_comps/comps
 |4,39,3,0,1585956047,"~/assets/theory_comps/comps"
 -'  3  0  ~/assets/theory_comps/comps
@@ -274,6 +250,38 @@ $
 |4,39,3,0,1585956047,"~/assets/theory_comps/comps"
 -'  3  0  ~/assets/theory_comps/comps
 |4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  3  0  ~/assets/theory_comps/comps
+|4,39,3,0,1585956047,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
+-'  1  0  ~/assets/theory_comps/comps
+|4,39,1,0,1585955930,"~/assets/theory_comps/comps"
 -'  1  0  ~/assets/theory_comps/comps
 |4,39,1,0,1585955930,"~/assets/theory_comps/comps"
 -'  1  0  ~/assets/theory_comps/comps
@@ -322,6 +330,38 @@ $
 |4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
 -'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
 |4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
+-'  1  0  ~/_posts/2020-02-18-analyzing-reddit-comments.md
+|4,39,1,0,1585936377,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
 -'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
 |4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
 -'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
@@ -338,102 +378,14 @@ $
 |4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
 -'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
 |4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  211  24  ~/_posts/2020-02-18-analyzing-reddit-comments.md
-|4,39,211,24,1585936367,"~/_posts/2020-02-18-analyzing-reddit-comments.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  154  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,154,0,1585936312,"~/_posts/2020-02-10-blink-nlp.md"
--'  1  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,1,0,1585936287,"~/_posts/2020-02-10-blink-nlp.md"
--'  1  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,1,0,1585936287,"~/_posts/2020-02-10-blink-nlp.md"
--'  1  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,1,0,1585936287,"~/_posts/2020-02-10-blink-nlp.md"
--'  1  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,1,0,1585936287,"~/_posts/2020-02-10-blink-nlp.md"
--'  1  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,1,0,1585936287,"~/_posts/2020-02-10-blink-nlp.md"
--'  1  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,1,0,1585936287,"~/_posts/2020-02-10-blink-nlp.md"
--'  1  0  ~/_posts/2020-02-10-blink-nlp.md
-|4,39,1,0,1585936287,"~/_posts/2020-02-10-blink-nlp.md"
 
 # History of marks within files (newest to oldest):
+
+> ~/.gitignore
+	*	1585970092	0
+	"	6	0
+	.	6	0
+	+	6	0
 
 > ~/about.md
 	*	1585965954	0
