@@ -1,3 +1,5 @@
-*.png
-*.pdf
-*.jpg
+[user]
+	name = njjms
+	email = sunn@oregonstate.edu
+[core]
+	editor = vim

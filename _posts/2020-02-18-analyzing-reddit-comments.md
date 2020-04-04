@@ -181,7 +181,7 @@ ORDER BY prop_controversial DESC
 
 + What are the most active subreddits?
 
-<img src="/assets/spark_submission.PNG" alt = "">
+<img src="/assets/512/spark_submission.PNG" alt = "">
 
 Not surprisingly, the most active subreddits are also the most popular subreddits!
 Almost all of the top subreddits appear regularly in the front page of reddit `r/all`, and those that don't are famous (or infamous) for having very active communities, for example, `r/T_D` which is a very controversial subreddit dedicated to Donald Trump and `r/PewdiepieSubmissions` which is a community based around the humor of popular youtube Pewdiepie.
@@ -190,14 +190,14 @@ Almost all of the top subreddits appear regularly in the front page of reddit `r
 
 This question is all about maximizing the karma (aka "worthless internet points") a user can get by commenting in particular subreddits.
 
-<img src="/assets/bq_kindest.PNG" alt = "">
+<img src="/assets/512/bq_kindest.PNG" alt = "">
 
 Interestingly, the kindest subreddits are communities centered around female or traditionally feminine topics.
 For example `r/SapphoAndHerFriend` is a lesbian empowerment subreddit, `r/muacirclejerk` is for makeup, and any subreddit with `rpdr` involves RuPaul's Drag Race (although as a fan, I can attest that the show doesn't strictly cater to women).
 
 Since this BigQuery job was inexpensive to run, I also decided to find the subreddits with the lowest average comment scores, modifying the `ORDER BY` clause.
 
-<img src="/assets/bq_harshest.PNG" alt = "">
+<img src="/assets/512/bq_harshest.PNG" alt = "">
 
 Less surprisingly, the subreddits with the lowest average scores are for the most part relatively mundane and elicit no strong feelings one way or the other.
 Any subreddit that has `r4r` is about ridesharing and carpools in different cities.
@@ -208,7 +208,7 @@ The exceptions to this are some unpopular **NSFW** subreddits, which understanda
 This question focuses on computing the proportion of comments in a subreddit that are considered *controversial*.
 For a comment to be controversial, it has to have a large number of votes with a relatively equal balance of upvotes and downvotes.
 
-<img src="/assets/bq_controversial.PNG" alt = "">
+<img src="/assets/512/bq_controversial.PNG" alt = "">
 
 While some subreddits are not surprising given the subject matter e.g. the Syrian Civil War, criticism of mainstream media, politics, and **Making a Murderer** which is a docuseries about a man framed for murder, there are some surprising additions to this list.
 For example, the most controversial subreddit is `r/announcements` which is a meta-subreddit about new features and changes to the website itself.

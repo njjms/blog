@@ -9,91 +9,91 @@ Here are some of my class notes and assignments from Oregon State that are mostl
 
 [Statistical Methods 1](/assets/methods1notes.pdf)
 
-[Statistical Methods 2](/assets/552_final_review.pdf)
+[Statistical Methods 2](/assets/552/552_final_review.pdf)
 
-[Statistical Methods 3](/assets/553_final_review.pdf)
+[Statistical Methods 3](/assets/553/553_final_review.pdf)
 
-[Quantitative Genomics](/assets/genomics_notes.pdf)
+[Quantitative Genomics](/assets/592/genomics_notes.pdf)
 
 ### Statistical Genomics
 
-[MDS for large genomic data](/assets/592_literature_report_1.pdf)
+[MDS for large genomic data](/assets/592/592_literature_report_1.pdf)
 
-[Optimal rare variant tests in sequencing association studies](/assets/592_literature_report_2.pdf)
+[Optimal rare variant tests in sequencing association studies](/assets/592/592_literature_report_2.pdf)
 
-[CAMERA competitive gene set test](/assets/592_literature_report_3.pdf)
+[CAMERA competitive gene set test](/assets/592/592_literature_report_3.pdf)
 
-[Microbiome analysis in gastropods using metagenomeSeq](/assets/592_midterm_report.pdf)
+[Microbiome analysis in gastropods using metagenomeSeq](/assets/592/592_midterm_report.pdf)
 
-[Predicting coral bleaching using glmmLasso](/assets/592_final_report.pdf)
+[Predicting coral bleaching using glmmLasso](/assets/592/592_final_report.pdf)
 
 ### Linear Regression
 
-[Initial Data Analysis](/assets/552hw1.pdf)
+[Initial Data Analysis](/assets/552/552hw1.pdf)
 
-[Algebra Behind Regression](/assets/552hw2.pdf)
+[Algebra Behind Regression](/assets/552/552hw2.pdf)
 
-[Model Interpretations](/assets/552hw3.pdf)
+[Model Interpretations](/assets/552/552hw3.pdf)
 
-[More Model Interpretations](/assets/552hw5.pdf)
+[More Model Interpretations](/assets/552/552hw5.pdf)
 
-[Nike Vaporflys and Faraway 5.1](/assets/552hw6.pdf)
+[Nike Vaporflys and Faraway 5.1](/assets/552/552hw6.pdf)
 
-[Diagnostics and Plots](/assets/552hw7.pdf)
+[Diagnostics and Plots](/assets/552/552hw7.pdf)
 
-[Weighted Least Squares and Lack of Fit](/assets/552hw8.pdf)
+[Weighted Least Squares and Lack of Fit](/assets/552/552hw8.pdf)
 
-[Regularized Regression](/assets/552hw9.pdf)
+[Regularized Regression](/assets/552/552hw9.pdf)
 
 ### Experimental Design
 
-[PROC GLM and PROC PLAN](/assets/553hw1.pdf)
+[PROC GLM and PROC PLAN](/assets/553/553hw1.pdf)
 
-[ANOVA](/assets/553hw2.pdf)
+[ANOVA](/assets/553/553hw2.pdf)
 
-[Contrasts and PROC MULTTEST](/assets/553hw3.pdf)
+[Contrasts and PROC MULTTEST](/assets/553/553hw3.pdf)
 
-[Fit Diagnostics and PROC GLMPOWER](/assets/553hw4.pdf)
+[Fit Diagnostics and PROC GLMPOWER](/assets/553/553hw4.pdf)
 
-[Circuit Delamination Analysis](/assets/553hw5.pdf)
+[Circuit Delamination Analysis](/assets/553/553hw5.pdf)
 
-[Neurotransmitter Analysis](/assets/553hw6.pdf)
+[Neurotransmitter Analysis](/assets/553/553hw6.pdf)
 
-[Random Effects](/assets/553hw7.pdf)
+[Random Effects](/assets/553/553hw7.pdf)
 
 [PROC MIXED](/assets/553hw8.pdf)
 
-[Relative Efficiency and Latin Squares](/assets/553hw9.pdf)
+[Relative Efficiency and Latin Squares](/assets/553/553hw9.pdf)
 
 ### Multivariate Statistics
 
-[Eigenvectors and Eigenvalues](/assets/557homework1.pdf)
+[Eigenvectors and Eigenvalues](/assets/557/557homework1.pdf)
 
-[Distance Metrics and Correlation Normality Test](/assets/557homework2.pdf)
+[Distance Metrics and Correlation Normality Test](/assets/557/557homework2.pdf)
 
-[Hotelling's $T^2$](/assets/557homework3.pdf)
+[Hotelling's $T^2$](/assets/557/557homework3.pdf)
 
-[Paired Hotelling's and Multivariate Regression](/assets/557homework4.pdf)
+[Paired Hotelling's and Multivariate Regression](/assets/557/557homework4.pdf)
 
-[PCA and Factor Analysis](/assets/557homework5.pdf)
+[PCA and Factor Analysis](/assets/557/557homework5.pdf)
 
-[CCA, LDA, hclust, k-Means, and MDS](/assets/557homework6.pdf)
+[CCA, LDA, hclust, k-Means, and MDS](/assets/557/557homework6.pdf)
 
-[Final](/assets/557final_project.pdf)
+[Final](/assets/557/557final_project.pdf)
 
 ### Generalized Regression Models
 
-[Boxcox Transforms](/assets/623ass2.pdf)
+[Boxcox Transforms](/assets/623/623ass2.pdf)
 
-[Comparing GRM models](/assets/623ass3.pdf)
+[Comparing GRM models](/assets/623/623ass3.pdf)
 
-[Overdispersed Exponential Parameterization](/assets/623ass4.pdf)
+[Overdispersed Exponential Parameterization](/assets/623/623ass4.pdf)
 
-[Bradley-Terry Models](/assets/623_midterm.pdf)
+[Bradley-Terry Models](/assets/623/623_midterm.pdf)
 
-[Residual Analysis](/assets/623ass5.pdf)
+[Residual Analysis](/assets/623/623ass5.pdf)
 
-[Ordinal Regression](/assets/623ass6.pdf)
+[Ordinal Regression](/assets/623/623ass6.pdf)
 
 ### System Administration
 
