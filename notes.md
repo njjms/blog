@@ -3,7 +3,12 @@ layout: page
 title: Notes
 permalink: /notes/
 ---
+
 Here are some of my class notes and assignments from Oregon State that are mostly for my benefit, although you are feel free to peruse them :)
+
+## Comprehensive Exams
+
+[Theory Comps](/assets/theory_comps/theory_comps.pdf)
 
 ### Class Reviews
 
