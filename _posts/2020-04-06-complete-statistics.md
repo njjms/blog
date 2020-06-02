@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  What is a completeness anyway? (and other comments about estimators)
+title:  What is completeness anyways? (and other comments about statistics)
 date:   2020-04-06 23:07:28 +0000
 categories: statistics
 ---

@@ -2,7 +2,7 @@
 layout: post
 title:  "Sampling and geostatistics for spatial data, ver Hoef (2002): literature review"
 date:   2020-04-02 23:07:28 +0000
-categories: statistics
+categories: [statistics, research]
 ---
 
 In [this paper](/assets/ms_references/verhoef2002.pdf), ver Hoef gives a primer on **what** geostatistics is and how it differs from classic statistical sampling.
