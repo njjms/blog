@@ -14,4 +14,4 @@ fi
 
 ${GIT} add --all . >> ${LOG}
 ${GIT} commit -m "Automated commit on ${COMMIT_TIMESTAMP}" >> ${LOG}
-${GIT} push cool master >> ${LOG}
+${GIT} push origin master >> ${LOG}
