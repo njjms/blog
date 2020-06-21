@@ -351,3 +351,79 @@ def findKthlargest(nums, k):
 		heappop(numheap)
 	return(heapop(numheap))
 {% endhighlight %}
+
+# Product of array except self
+
+I saw this problem from JomaTech (yeah I know he's kind of *whatever* nowadata) and wanted to give it a try.
+
+You are given an array of *k* numbers as input.
+Write a function that returns the an array of numbers where each element *i* is the product of all the elements in the input except the *ith* element.
+Try to do it in linear time and in constant space.
+
+This problem definitely stumped me for a while. 
+It's easy enough to write a simple nested for-loop to do it in $O(n^2)$, but that wouldn't cut it if I was in a serious tech interview (hey, it could happen).
+
+Nick White (who you should support on Patreon) had a great solution.
+Basically, you want to walk through the array once in a forward pass where each element will be the product of all the elements that are to the left of it.
+This will be an $O(n)$ operation.
+Then, you want to walk backwards (another $O(n)$ operation) and multiply each element again by all the elements to the right.
+You can do this using a variable so that you don't need to allocate more space than the output array.
+
+{% highlight python %}
+def productexceptself(nums):
+	output = nums
+	output[0] = 1
+	for i in 1:len(nums):
+		output[i] = output[i-1]*nums[i]
+	
+	tmp.backwards.pass = 1
+	for j in range(len(nums)-1, 1, -1):
+		output[j] = tmp.backwards.pass*output[j]	
+		tmp.backwards.pass = tmp.backwards.pass*nums[j]
+
+	return(output)
+{% endhighlight %}
+
+# kth Fibonacci number
+
+Can't believe I went this long without doing a Fibonacci problem :P
+
+I remember applying for a research job back in college and getting this questions in my interview.
+I hadn't taken any computer science courses and barely knew how to program so it really stumped me.
+Needless to say, I didn't get that job.
+
+Write a function that returns the kth Fibonacci number.
+
+{% highlight python %}
+def kthfib(n):
+	if n < 0:
+		return -1
+	elif n <= 1:
+		return n
+	else:
+		return kthfib(n-1) + kthfib(n-2)
+{% endhighlight %}
+
+The problem with this implementation is that it will run very slow at $O(2^n)$ since at every function call you make 2 recursion call.
+The space complexity is also pretty poor.
+
+Here's a better implementation:
+
+{% highlight python %}
+def kthfib(n):
+	if n < 0:
+		return -1
+	elif n <= 1:
+		return n
+	else:
+		a = 0
+		b = 1
+		sum = a + b
+		while n > 1:
+			sum = a + b
+			a = b
+			b = sum
+			n -= 1
+		return sum
+{% endhighlight %}
+

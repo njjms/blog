@@ -20,6 +20,24 @@ Here are some of my class notes and assignments from Oregon State that are mostl
 
 [Quantitative Genomics](/assets/592/genomics_notes.pdf)
 
+### Bayesian Statistics
+
+[Introduction to Bayesian statistics](/assets/bayesian/homework1.pdf)
+
+[Normal, Gamma-Poisson, Jeffrey's Prior](/assets/bayesian/homework2.pdf)
+
+[More noninformative priors](/assets/bayesian/homework3.pdf)
+
+[Dirichlet-Multinomial](/assets/bayesian/homework4.pdf)
+
+[Paul, Nancy, and Bayesian ANOVA](/assets/bayesian/homework5.pdf)
+
+[Metropolis-Hastings and Gibbs Samplers](/assets/bayesian/homework6.pdf)
+
+[Midterm](/assets/bayesian/midterm.pdf)
+
+[Final](/assets/bayesian/final.pdf)
+
 ### Statistical Genomics
 
 [MDS for large genomic data](/assets/592/592_literature_report_1.pdf)
