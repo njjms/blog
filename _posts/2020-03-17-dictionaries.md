@@ -12,13 +12,13 @@ The last ADT that we will be discussing in this class is the *dictionary* or the
 Dictionaries are pretty common data structures since a common situation that arises is if we want to store key-value pairs.
 In C, this can be defined using a struct like:
 
-```
+{% highlight c %}
 struct Association 
 {
 	KT key;
 	VT value;
 };
-```
+{% endhighlight %}
 
 The dictionary stores these key-value pairs and allows for quick look up of values *using* their associated keys.
 
@@ -35,7 +35,7 @@ We can implement a dictionary in C using a dynamic array where each element is a
 
 The `get` function finds the value associated with a key and puts that value inside of a pointer variable called `valptr`.
 
-```
+{% highlight c %}
 void dynArrayDictionaryGet(struct dynArray* da, KEYTYPE key, VALUETYPE* valptr)
 {
 	int i;
@@ -47,12 +47,12 @@ void dynArrayDictionaryGet(struct dynArray* da, KEYTYPE key, VALUETYPE* valptr)
 		}
 	}
 }
-```
+{% endhighlight %}
 
 The `put` function places a value in the position associated with a particular key.
 If an association is already there with that key, it is removed.
 
-```
+{% highlight c %}
 void dynArrayDictionaryPut(struct dynArray* da, KEYTYPE key, VALUETYPE val)
 {
 	struct association* ap;
@@ -68,11 +68,11 @@ void dynArrayDictionaryPut(struct dynArray* da, KEYTYPE key, VALUETYPE val)
 	ap->value = val;
 	dynArrayAdd(da, ap);
 }
-```
+{% endhighlight %}
 
 The `contains` function is also very helpful.
 
-```
+{% highlight c %}
 int dynArrayDictionaryContainsKey(struct dynArray* da, KEYTYPE key)
 {
 	int i;
@@ -86,11 +86,11 @@ int dynArrayDictionaryContainsKey(struct dynArray* da, KEYTYPE key)
 	}
 	return 0;
 }
-```
+{% endhighlight %}
 
 Finally, let's implement the `remove` function.
 
-```
+{% highlight c %}
 void dynArrayDictionaryRemoveKey(struct dynArray* da, KEYTYPE key)
 {
 	int i;
@@ -108,4 +108,4 @@ void dynArrayDictionaryRemoveKey(struct dynArray* da, KEYTYPE key)
 		}
 	}
 }
-```
+{% endhighlight %}

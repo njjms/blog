@@ -26,7 +26,7 @@ The requirements for performing a binary search are that:
 
 The binary search function in C will probably look something like this:
 
-```
+{% highlight c %}
 int _binarySearch(TYPE* data, int size, TYPE val)
 {
 	int low = 0;
@@ -47,7 +47,7 @@ int _binarySearch(TYPE* data, int size, TYPE val)
 	}
 	return low;
 }
-```
+{% endhighlight %}
 
 We have two integers `low` and `high` which will be the boundaries of the indices we are seraching for `val`.
 We start off by defining the `low` and `high` to be the indices at the ends of the collection.
@@ -69,7 +69,7 @@ If we enforce the bag to keep elements in order, `add` and `remove` get slower a
 The `add` function doesn't change too much, it just has to make use of the index outputted by the binary search function.
 The rest is basically just the same as regular old bag `add` function.
 
-```
+{% highlight c %}
 void dynArrayAddAt(struct dynArray* da, int index, TYPE newElement)
 {
 	int i;
@@ -88,12 +88,12 @@ void dynArrayAddAt(struct dynArray* da, int index, TYPE newElement)
 	da->data[index] = newElement;
 	da->size++;
 }
-```
+{% endhighlight %}
 
 The `contains` function is pretty easy.
 In this implementation, I call `_binarySeach` inside the function.
 
-```
+{% highlight c %}
 int orderedArrayContains(struct dynArray* da, TYPE testElement)
 {
 	assert(da != NULL);
@@ -108,12 +108,12 @@ int orderedArrayContains(struct dynArray* da, TYPE testElement)
 	}
 	return contains;
 }
-```
+{% endhighlight %}
 
 Finally, the `remove` function is almost no different than the original implementation.
 What we have to make sure of though is that the element at the index location is equal to the element we want to remove.
 
-```
+{% highlight c %}
 void orderedArrayRemove(struct dynArray* da, TYPE testElement)
 {
 	assert(da != NULL);
@@ -125,7 +125,7 @@ void orderedArrayRemove(struct dynArray* da, TYPE testElement)
 		removeAtDynArr(da, index);
 	}
 }
-```
+{% endhighlight %}
 
 #### Last little note... Fast Merge
 

@@ -59,7 +59,7 @@ If the load factor gets too big, this means we need to make a new array with dou
 
 The implementation of open address hashing in C is provided below:
 
-```
+{% highlight c %}
 struct openHashTable {
 	TYPE** table;
 	int tablesize;
@@ -105,11 +105,11 @@ void _resizeOpenHashTable(struct openHashTable* ht)
 	}
 	free(temp);
 }
-```
+{% endhighlight %}
 
 The main operations we have to implement are `add` and `contains` since we're avoiding the `remove` operation.
 
-```
+{% highlight c %}
 void openHashTableAdd(struct openHashTable* ht, TYPE* newValue)
 {
 	ht->count++;
@@ -142,14 +142,14 @@ void openHashTableAdd(struct openHashTable* ht, TYPE* newValue)
 		}
 	}
 }
-```
+{% endhighlight %}
 
 The `idx = -1;` line breaks the loop.
 We could have also just called `return`.
 
 The `contains` function is provided below:
 
-```
+{% highlight c %}
 int openHashTableContains(struct openHashTable* ht, TYPE newValue)
 {
 	int idx = HASH(newValue) % ht->tablesize;
@@ -173,7 +173,7 @@ int openHashTableContains(struct openHashTable* ht, TYPE newValue)
 	}
 	return 0;
 }
-```
+{% endhighlight %}
 
 # Chaining Hashing
 
@@ -190,7 +190,7 @@ Each operation on the hash table is divided into two steps.
 First, the element is hashed and the remainder taken after dividing by the table size which returns the table index.
 Second, the corresponding linked list is examined.
 
-```
+{% highlight c %}
 struct hlink {
 	TYPE value;
 	struct hlink* next;
@@ -243,11 +243,11 @@ void resizeTable(struct hashTable* ht)
 	ht = newTable;
 	newTable = 0;
 }
-```
+{% endhighlight %}
 
 Let's implement the `add` function first!
 
-```
+{% highlight c %}
 void hashTableAdd(struct hashTable* ht, TYPE newValue)
 {
 	int hashIndex = HASH(newValue) % ht->tablesize;
@@ -269,13 +269,13 @@ void hashTableAdd(struct hashTable* ht, TYPE newValue)
 		_resizeHashTable(ht);
 	}
 }
-```
+{% endhighlight %}
 
 Notice that the `add` operation switches the head of the linked list and the new link so that the new link is at the head of the linked list!
 
 Let's do the `contains` function next.
 
-```
+{% highlight c %}
 int hashTableContains(struct hashTable* ht, TYPE testElement)
 {
 	assert(ht != NULL);
@@ -294,11 +294,11 @@ int hashTableContains(struct hashTable* ht, TYPE testElement)
 	}
 	return 0;
 }
-```
+{% endhighlight %}
 
 Finally, let's do the `remove` function!
 
-```
+{% highlight c %}
 void hashTableRemove(struct hashTable* ht, TYPE testElement)
 {
 	int hashIndex = HASH(newValue) % ht->tablesize;
@@ -331,7 +331,7 @@ void hashTableRemove(struct hashTable* ht, TYPE testElement)
 	current = current->next;
 	}
 }
-```
+{% endhighlight %}
 
 The `remove` function has a special case when the `prev` node is `NULL`.
 In that case, the value we want to remove is at the first node in the list and the linked list head is the set to `current->next`.
@@ -350,7 +350,7 @@ The general idea is that:
 
 The C code for something like this would look like:
 
-```
+{% highlight c %}
 void countSort(int data[], int n, int max)
 {
 	int i, j, k
@@ -370,7 +370,7 @@ void countSort(int data[], int n, int max)
 		}
 	}
 }
-```
+{% endhighlight %}
 
 In the first for loop, we iterate through all of the buckets in the hash table.
 In the second loop, we iterate through all the values in the bucket.

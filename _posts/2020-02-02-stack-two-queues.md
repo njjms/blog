@@ -18,7 +18,7 @@ The advantage of using queues to implement a stack is that a queue has O(1) acce
 
 This implementation is pretty tricky at first, so let's start by just defining our structs:
 
-```
+{% highlight c %}
 struct Link
 {
 	TYPE value;
@@ -36,7 +36,7 @@ struct Stack
 	struct Queue* q1;
 	struct Queue* q2;
 };
-```
+{% endhighlight %}
 
 We have a couple building blocks here.
 We have queues which are composed of single links and two pointers, one sentinel link in the front and another pointer to the last link in the back.
@@ -44,7 +44,7 @@ Then the stack itself is made of two queues, which we will explain why further d
 
 Initializing the queues is somewhat familiar from previous work that we've done!
 
-```
+{% highlight c %}
 void listQueueInit(struct Queue* queue)
 {
 	assert(queue != NULL);
@@ -64,7 +64,7 @@ struct Queue* listQueueCreate()
 
 	return queue;
 }
-```
+{% endhighlight %}
 
 When we create a queue, our `head` and `tail` pointers both go to the sentinel since our queue is empty.
 Similarly to before, the `next` pointer in the sentinel starts at pointing to $NULL$.
@@ -79,7 +79,7 @@ A queue has a couple basic functions:
 
 Let's start by writing our `enqueuing` function:
 
-```
+{% highlight c %}
 void listQueueAddBack(struct Queue* queue, TYPE value)
 {
 	assert(queue != NULL);
@@ -92,14 +92,14 @@ void listQueueAddBack(struct Queue* queue, TYPE value)
 	newLink->value = value;
 	newLink->next = NULL;
 }
-```
+{% endhighlight %}
 
 Pretty straightforward function, just need to make sure that our queue's tail pointer now points to this new link and that the current last link's next pointer also points to the new link.
 
 Let's take a look at the `dequeuing` function now which will remove and free the link after the sentinel.
 The actual output of this function will be the value that we are removing from the queue, which will come in handy later.
 
-```
+{% highlight c %}
 TYPE listQueueRemoveFront(struct Queue* queue)
 {
 	assert(queue != NULL);
@@ -122,7 +122,7 @@ TYPE listQueueRemoveFront(struct Queue* queue)
 
 	return val;
 }
-```
+{% endhighlight %}
 
 One important part is defining pointer variable `rm`.
 If the queue only has one link, then `rm` is that one link and removing it is essentially making queue's tail pointer equal to the head pointer, which is the queue's sentinel.
@@ -134,7 +134,7 @@ We *also* have to make sure that the pointer `queue->head->next = NULL` like in 
 
 The `Front` function is pretty straightforward.
 
-```
+{% highlight c %}
 TYPE listQueueFront(struct Queue* queue)
 {
 	assert(queue != NULL);
@@ -142,11 +142,11 @@ TYPE listQueueFront(struct Queue* queue)
 
 	return queue->head->next->value;
 }
-```
+{% endhighlight %}
 
 So are the `isEmpty` and `Destroy` functions!
 
-```
+{% highlight c %}
 int listQueueIsEmpty(struct Queue* queue)
 {
 	assert(queue != NULL);
@@ -173,7 +173,7 @@ void listQueueDestroy(struct Queue* queue)
 	free(queue);
 	queue = NULL;
 }
-```
+{% endhighlight %}
 
 Note that even though `Remove` return a value of TYPE, we don't necessarily have to capture that value using some throwaway variable.
 
@@ -193,7 +193,7 @@ And since it's still a stack, `pop` and `top` are O(1).
 
 Let's start by writing the function to initialize the stack, which again is just two queues stuck together in a struct.
 
-```
+{% highlight c %}
 struct Stack* listStackFromQueuesCreate()
 {
 	struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack));
@@ -207,12 +207,12 @@ struct Stack* listStackFromQueuesCreate()
 
 	return stack;
 }
-```
+{% endhighlight %}
 
 Let's write some other basic functions: `Destroy` and `isEmpty`.
 These are pretty easy since it's basically just doing functions on queues which we've already written!
 
-```
+{% highlight c %}
 void listStackDestroy(struct Stack* stack)
 {
 	assert(stack != NULL);
@@ -230,13 +230,13 @@ int listStackIsEmpty(struct Stack* stack)
 	assert(stack != NULL);
 	return listQueueIsEmpty(stack->q1);
 }
-```
+{% endhighlight %}
 
 So now we get into some spicier stuff.
 In the pseudocode I wrote above, I said that we would copy over elements from queue 1 and put them in queue 2 when we wanted to add a new element to the top of the stack.
 A slightly easier way to do this is to just have a function that swaps the two queues with each other.
 
-```
+{% highlight c %}
 void listSwapStackQueue(struct Stack* stack)
 {
 	assert(stack != NULL);
@@ -244,7 +244,7 @@ void listSwapStackQueue(struct Stack* stack)
 	stack->q1 = stack->q2;
 	stack->q2 = tmp;
 }
-```
+{% endhighlight %}
 
 `Push` will be our most complex function (but that means we're almost done!)
 
@@ -255,7 +255,7 @@ To do this, we actually begin by pushing the new value to queue 2 (which is empt
 We will then use the `swap` function **AFTER** we have added the new value to queue 2 **AND** have copied everything from queue 1 over to queue 2.
 After we swap queue 2 and queue 1, queue 1 will have all the elements and queue 2 will be empty.
 
-```
+{% highlight c %}
 void listStackPush(struct Stack* stack, TYPE value)
 {
 	assert(stack != NULL);
@@ -275,11 +275,11 @@ void listStackPush(struct Stack* stack, TYPE value)
 		listSwapStackQueue(stack);	
 	}
 }
-```
+{% endhighlight %}
 
 Our last functions are `pop` and `top`, but like I said, those are easy!
 
-```
+{% highlight c %}
 TYPE listStackPop(struct Stack* stack)
 {
 	assert(stack != NULL);	
@@ -295,13 +295,13 @@ TYPE listStackTop(struct Stack* stack)
 	
 	return listQueueFront(stack->q1);
 }
-```
+{% endhighlight %}
 
 We finally made it!
 
 You can test the above stack implementation using this code provided by the Oregon State Department of Computer Science or something like that.
 
-```
+{% highlight c %}
 void assertTrue(int pred, char* msg)
 {
 	printf("%s: ", msg);
@@ -344,4 +344,4 @@ int main()
 
 	return 0;
 }
-```
+{% endhighlight %}

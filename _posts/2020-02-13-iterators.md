@@ -20,7 +20,7 @@ An iterator is characterized by four functions:
 
 In the end use case, we will use these iterators in code blocks like these:
 
-```
+{% highlight c %}
 dynArrayIterator itr;
 TYPE current;
 dynArray data;
@@ -31,7 +31,7 @@ while(dynArryHasNext(&itr))
 	current = dynArrayNext(&itr);
 	// stuff happens here...
 }
-```
+{% endhighlight %}
 
 What's important to remember is that the iterator maintains a pointer to a specific element in the collection and `hasNext` and `Next` are used in combination to move that pointer forward.
 Additionally, after `remove` is used, the next element in the sequence will be produced.
@@ -41,7 +41,7 @@ Additionally, after `remove` is used, the next element in the sequence will be p
 The iterator for a dynamic array will work by maintaining an index into the array representing the current location, initialized to 0.
 Let's start by defining the struct for a `dynArrayIterator` and initializing it.
 
-```
+{% highlight c %}
 struct dynArrayIterator
 {
 	struct dynArr* da;
@@ -56,7 +56,7 @@ void dynArrayIteratorInit(struct dynArr* da, struct dynArrayIterator* itr)
 	itr->da = da;
 	itr->currentIndex = -1;
 }
-```
+{% endhighlight %}
 
 Notice that in our init function, we set the currentIndex = -1.
 Again, this is because the first thing we're going to do is use the `hasNext` and `next` functions which will increment index
@@ -64,7 +64,7 @@ Therefore, we want to make sure we're not skipping the first element at index 0.
 
 Let's write the `hasNext` and `next` functions now.
 
-```
+{% highlight c %}
 int dynArrayIteratorHasNext(struct dynArrayIterator* itr)
 {
 	assert(itr != NULL);
@@ -83,18 +83,18 @@ TYPE dynArrayIteratorNext(struct dynArrayIterator* itr)
 	itr->currentIndex++;
 	return itr->da->data[itr->currentIndex];
 }
-```
+{% endhighlight %}
 
 For the `remove` function, we will make use of the fact that we already have a handy `dynArrayRemoveAt` function written to take out elements at a specific index.
 
-```
+{% highlight c %}
 void dynArrayIteratorRemove(struct dynArrayIterator* itr)
 {
 	assert(itr != NULL);
 	dynArrayRemoveAt(itr->da, itr->currentIndex);
 	itr->currentIndex--;
 }
-```
+{% endhighlight %}
 
 Note that we remove the element at the current index of the iterator and then we **decrement** said index.
 We have to decrement in order to avoid skipping elements in the array the next time we call `next`.
@@ -106,7 +106,7 @@ Let's implement these functions on a linked list!
 Whereas the dynamic array iterator kept track of an index, our linked list iterator will keep track of a current link.
 The struct will look like this:
 
-```
+{% highlight c %}
 struct linkedListIterator
 {
 	struct linkedList* lst;
@@ -118,12 +118,12 @@ void linkedListIteratorInit(struct linkedList* lst, struct linkedListIterator* i
 	itr->lst = lst;
 	itr->currentLink = lst->lst->frontSentinel;
 }
-```
+{% endhighlight %}
 
 The above explanation of the functions was a little confusing, but once we demonstrate how to implement this in code, it will hopefully become more clear.
 Let's start with the `hasNext` function.
 
-```
+{% highlight c %}
 int linkedListIteratorHasNext(struct linkedListIterator* itr)
 {
 	assert(itr != NULL);
@@ -134,7 +134,7 @@ int linkedListIteratorHasNext(struct linkedListIterator* itr)
 	}
 	return hasNext;
 }
-```
+{% endhighlight %}
 
 All the `hasNext` function really does is check to see if the pointer `currentLink->next` is equal to the back sentinel.
 If it is, then there are no more elements and we return 0, otherwise we return 1.
@@ -143,13 +143,13 @@ Nice and easy :)
 
 Let's do another one, the `next` function.
 
-```
+{% highlight c %}
 TYPE linkedListIteratorNext(struct linkedListIterator* itr)
 {
 	itr->currentLink = itr->currentLink->next;
 	return int->currentLink->value;
 }
-```
+{% endhighlight %}
 
 We can see here that `next` moves the pointer forward in the first line, then returns whatever value is in that link.
 
@@ -157,7 +157,7 @@ For the `remove` function, we are going to make use of the `_removeLink` functio
 We have to keep in mind that after the `remove` function is called, the pointer `itr->currentLink` should on the link **before** the link that was removed.
 If we move it forward, then we will actually be skipping a link because `hasNext` and `next` always move the pointer forwards from whatever the current node is.
 
-```
+{% highlight c %}
 void linkedListIteratorRemove(struct linkedListIterator* itr)
 {
 	struct dLink* temp = itr->currentLink;
@@ -165,7 +165,7 @@ void linkedListIteratorRemove(struct linkedListIterator* itr)
 
 	_removeLink(itr->lst, temp);
 }
-```
+{% endhighlight %}
 
 We use the classic little trick of defining a `temp` variable and then freeing it.
 `itr->currentLink` essentially moves backwards one link to `itr->currentLink->prev`, and the handy `_removeLink` function cleans up all our pointers for us.

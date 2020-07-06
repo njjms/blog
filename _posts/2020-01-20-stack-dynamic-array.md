@@ -26,7 +26,7 @@ Using the functions we wrote before for the dynamic array, this implementation i
 
 Let's start with `isEmpty` which is not too bad.
 
-```
+{% highlight c %}
 int isEmptyDynArr(DynArr* v)
 {
 	assert(v != NULL);
@@ -39,42 +39,42 @@ int isEmptyDynArr(DynArr* v)
 		return 0;
 	}
 }
-```
+{% endhighlight %}
 
 The `push` function is almost as simple!
 
-```
+{% highlight c %}
 void pushDynArr(DynArr* v, TYPE val)
 {
 	assert(v != NULL);
 	addDynArr(v, val);
 }
-```
+{% endhighlight %}
 
 Again, `addDynArr(v, val)` adds $val$ to the back of $v$.
 So we can kind of treat the back of $v$ as being the **top of the stack**.
 Let's segue into `top` and `pop` now:
 
-```
+{% highlight c %}
 TYPE topDynArr(DynArr* v)
 {
 	assert(v != NULL);
 	assert(v->size > 0);
 	return getDynArr(v, sizeDynArr(v) - 1);
 }
-```
+{% endhighlight %}
 
 Again, notice that the top element of $v$ is located at the index $size - 1$.
 The `pop` function is very similar to `top`.
 
-```
+{% highlight c %}
 void popDynArr(DynArr* v)
 {
 	assert(v != NULL);
 	assert(v->size > 0);
 	removeAtDynArr(v, sizeDynArr(v) - 1);
 }
-```
+{% endhighlight %}
 
 And boom, just like that we have all the functions needed to implement a stack using a dynamic array!
 

@@ -37,20 +37,20 @@ In the implementation we use, everytime the dynamic array reaches capacity, it:
 
 In C, the basic struct of the Dynamic Array is fairly simple:
 
-```
+{% highlight c %}
 struct DynArr
 {
 	TYPE *data;
 	int size;
 	int capacity;
 };
-```
+{% endhighlight %}
 
 The dynamic array consists of three things: a pointer to the beginning of a contiguoys block of memory which we will use to store the data of type *TYPE*, an integer for the current size, and another integer for the capacity of the array.
 The functions which implement the behavior of the dynamic array are also fairly straightforward.
 Let's talk about initializing the array first:
 
-```
+{% highlight c %}
 void initDynArr(DynArr* v, int capacity)
 {
 	assert(capacity > 0);
@@ -62,12 +62,12 @@ void initDynArr(DynArr* v, int capacity)
 	v->size = 0;
 	v->capacity = capacity;
 }
-```
+{% endhighlight %}
 
 Here, this is where an empty array of positive capacity is allocated from the heap (but not returned).
 We would call this init function in another function like:
 
-```
+{% highlight c %}
 DynArr* newDynArr(int cap)
 {
 	assert(cap > 0);
@@ -77,14 +77,14 @@ DynArr* newDynArr(int cap)
 	initDynArr(r, cap);
 	return r;
 }
-```
+{% endhighlight %}
 
 This function returns a pointer to our new dynamic array with specified capacity.
 We'll be using this function as we add data, grow, and require a new block of memory.
 
 Some other important functions include freeing and deleting the dynamic array and getting the current size:
 
-```
+{% highlight c %}
 void freeDynArr(DynArr* v)
 {
 	if(v->data != NULL)
@@ -106,12 +106,12 @@ int sizeDynArr(DynArr* v)
 {
 	return v->size;
 }
-```
+{% endhighlight %}
 
 Finally to the *piece de resistance*: resizing the dynamic array.
 This function is probably the most complicated in the entire implementation, but it mostly just follows from the pseudocode I wrote above:
 
-```
+{% highlight c %}
 void _dynArrSetCapacity(DynArr* v, int newCap)
 {
 	assert(v != NULL);
@@ -129,7 +129,7 @@ void _dynArrSetCapacity(DynArr* v, int newCap)
 	v->data = newArray;
 	v->capacity = newCap;
 }
-```
+{% endhighlight %}
 
 So again, there are a couple piece to this function.
 First is allocating the necessary memory to fit a `newCap` number of elements with type *TYPE* and giving us a pointer to that block of memory.
@@ -143,7 +143,7 @@ Now that we have the core functionality of the dynamic array down, what can we d
 
 Let's write functions to add elements, get elements, put elements, and remove elements!
 
-```
+{% highlight c %}
 void addDynArr(DynArr* v, TYPE val)
 {
 	if(v->size >= v->capacity)
@@ -153,13 +153,13 @@ void addDynArr(DynArr* v, TYPE val)
 	v->data[(v->size)] = val;
 	v->size++;
 }
-```
+{% endhighlight %}
 
 Here, it's important to remember that the element at index **v->size** is actually empty (well, techncially its garbage because this is C, but in any event we want to put the new element at the end.
 
 This function will return the value at a particular position inside the dynamic array, of course assuming that the position is valid. 
 
-```
+{% highlight c %}
 TYPE getDynArr(DynArr* v, int pos)
 {
 	assert(v != NULL);
@@ -167,11 +167,11 @@ TYPE getDynArr(DynArr* v, int pos)
 	assert(pos >= 0 && pos < v->size);
 	return v->data[pos];
 }
-```
+{% endhighlight %}
 
 The `put` function will replace an element at a specific location in the dynamic array.
 
-```
+{% highlight c %}
 void putDynArr(DynArr* v, int pos, TYPE val)
 {
 	assert(v != NULL);
@@ -179,11 +179,11 @@ void putDynArr(DynArr* v, int pos, TYPE val)
 	assert(pos >= 0 && pos < v->size);
 	v->data[pos] = val;
 }
-```
+{% endhighlight %}
 
 The `swap` function will switch the values held in two different addresses within the dynamic array.
 
-```
+{% highlight c %}
 void swapDynArr(DynArr* v, int i, int j)
 {
 	TYPE temp = getDynArr(v, i);
@@ -192,13 +192,13 @@ void swapDynArr(DynArr* v, int i, int j)
 	putDynArr(v, i, getDynArr(v, j));
 	putDynArr(v, j, temp);	
 }
-```
+{% endhighlight %}
 
 Notice that we had to save the value in the *ith* index before we started using `put`, otherwise we would overwrite it and then when we would call `put` a second time on the *jth index*, we'd be putting back the same value that was already there!
 
 Finally, we have the `remove` function which takes out an element at a specified location and then moves all the elements back to fill in the gap.
 
-```
+{% highlight c %}
 void removeAtDynArr(DynArr* v, int idx)
 {
 	assert(v != NULL);
@@ -211,7 +211,7 @@ void removeAtDynArr(DynArr* v, int idx)
 	}
 	v->size--;
 }
-```
+{% endhighlight %}
 
 Using these function, we can do all sorts of cool implementations using dynamic arrays.
 For example, we can use dynamic arrays to implement abstract data types like bags, stacks, queues, and deques.

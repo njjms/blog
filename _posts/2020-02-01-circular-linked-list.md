@@ -21,7 +21,7 @@ If you started at the sentinel (or theoretically any link for that matter) and s
 
 Let's define the structs first:
 
-```
+{% highlight c %}
 struct Link 
 {
 	TYPE value;
@@ -34,14 +34,14 @@ struct circularList
 	int size;
 	struct Link* sentinel;
 }; 
-```
+{% endhighlight %}
 
 Pretty familiar stuff.
 In fact, this is "simpler" than the doubly linked list we already implemented since we only have to deal with one sentinel!
 
 Initializing and creating the circular linked list is also pretty familiar:
 
-```
+{% highlight c %}
 static void inti(struct CircularList* deque)
 {
 	assert(deque != NULL);
@@ -61,14 +61,14 @@ struct CircularList* circularListCreate()
 	init(deque);
 	return deque;
 }
-```
+{% endhighlight %}
 
 The key difference here with the circular doubly linked list is that the single sentinel begins by pointing **to itself** in both directions.
 So if you go to the `next` or `prev` pointer, you end up back at the sentinel.
 
 Let's write a function to create a link (**but not add it**) to the circular linked list.
 
-```
+{% highlight c %}
 static struct Link* createLink(TYPE val)
 {
 	struct Link* newLink = (struct Link*)malloc(sizeof(struct Link));
@@ -80,12 +80,12 @@ static struct Link* createLink(TYPE val)
 	
 	return newLink;
 }
-```
+{% endhighlight %}
 
 Now that we have this function, we can write a general function to add a new link to the circular linked list.
 We will call this function `addLinkAfter`, which will create a new link containing a specified value and add it *after* a specified link in the list.
 
-```
+{% highlight c %}
 static void addLinkAfter(struct CircularList* deque, struct Link* link, TYPE value)
 {
 	assert(deque != NULL);
@@ -100,7 +100,7 @@ static void addLinkAfter(struct CircularList* deque, struct Link* link, TYPE val
 
 	deque->size++;
 }
-```
+{% endhighlight %}
 
 The first chunk of code is creating a new link and specifying the pointers of the new link so that it points backwards to the exisiting link we are adding after and points forwards to the existing links `next` link.
 
@@ -111,7 +111,7 @@ So far, pretty straightforward!
 The last function we want to implement is the `remove` function.
 This function is a little spicier.
 
-```
+{% highlight c %}
 static void removeLink(struct CircularList* deque, struct Link* link)
 {
 	assert(deque != NULL);
@@ -126,14 +126,14 @@ static void removeLink(struct CircularList* deque, struct Link* link)
 
 	deque->size--;
 }
-```
+{% endhighlight %}
 
 A practice that I have been using in CS261 is to create temporary pointer variables such as `tmp` here that allows me to manipulate values while still having a copy of the original (since C is pass by value).
 I could have just skipped the line defining `tmp` and just used `link` instead for moving the pointers, but in more complicated functions I think this runs the risk of changing something you don't necessarily want to change.
 
 Finally, let's write a function to destroy the circular list after we are done with it:
 
-```
+{% highlight c %}
 void circularListDestroy(struct CircularList* deque)
 {
 	assert(deque != NULL);
@@ -148,14 +148,14 @@ void circularListDestroy(struct CircularList* deque)
 
 	free(deque->sentinel);
 }
-```
+{% endhighlight %}
 
 Here is an example of where it is helpful to have a `tmp` variable defined since we don't want to call `removeLink` on our `current` pointer since that will free all the memory, including the pointer to the next link.
 If we instead keep `current` to keep iterating along the circular list and `tmp` for removal and freeing memory and make sure the `current` is always ahead of `tmp`, we won't run into this issue.
 
 Finally, let's write two useful helper functions like we did for the regular doubly linked list: `isEmpty` and `Print`:
 
-```
+{% highlight c %}
 int circularListIsEmpty(struct CircularList* deque)
 {
 	assert(deque != NULL);
@@ -180,7 +180,7 @@ void circularListPrint(struct CircularList* deque)
 		current = current->next;
 	}
 }
-```
+{% endhighlight %}
 
 Instead of using an `assert` in the `Print` function, I instead opted to output a message that the list was empty and exit.
 Some implementations might be different though!
@@ -202,7 +202,7 @@ Recall that the deque needs several functions:
 
 Thankfully, most of these are pretty easy since we can just use the functions we've already written!
 
-```
+{% highlight c %}
 void circularListAddFront(struct CircularList* deque, TYPE value)
 {
 	assert(deque != NULL);
@@ -214,7 +214,7 @@ void circularListAddBack(struct CircularList* deque, TYPE value)
 	assert(deque != NULL);
 	addLinkAfter(deque, deque->sentinel->prev, value);
 }
-```
+{% endhighlight %}
 
 For the `add` functions, the positioning is all based around the sentinel.
 When we add to the front of the deque we are adding a link right after our sentinel.
@@ -222,7 +222,7 @@ When we add to the back, we are adding a link right after the previous link of t
 
 We can follow the same logic for the other functions!
 
-```
+{% highlight c %}
 TYPE circularListFront(struct CircularList* deque)
 {
 	assert(deque != NULL);
@@ -248,7 +248,7 @@ void circularListRemoveBack(struct CircularList* deque)
 	assert(deque->size > 0);
 	removeLink(deque, deque->sentinel->prev);
 }
-```
+{% endhighlight %}
 
 The key bit with the remove functions is that we have to make sure the size of the circular linked list is greater than 0.
 Otherwise, we'll end up removing the sentinel itself and that would be bad news for us!
@@ -279,17 +279,17 @@ After defining `current` to point to the current link, the basic flow for each l
 Steps 2 and 3 are what switch the `next` and `prev` pointers for each link.
 In code, these steps look like:
 
-```
+{% highlight c %}
 tmp = current->next;
 current->next = current->prev;
 current->prev = tmp;
 
 current = tmp;
-```
+{% endhighlight %}
 
 Now all the function is inserting this code block inside a `while` loop so we can iterate through the entire circular list!
 
-```
+{% highlight c %}
 void circularListReverse(struct CircularList* deque)
 {
 	assert(deque != NULL);
@@ -307,7 +307,7 @@ void circularListReverse(struct CircularList* deque)
 		current = tmp;
 	}
 }
-```
+{% endhighlight %}
 
 Easy peeze when you finally look at it :)
 

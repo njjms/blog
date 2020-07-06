@@ -33,7 +33,7 @@ In writing the API functions for the heap, we can make use of helpful dynamic ar
 
 Here are some useful functions!
 
-```
+{% highlight c %}
 int indexSmallest(struct dynArray* v, int i, int j)
 {
 	if (compare(getDynArr(i, j), getDynArr(v, j)) == -1)
@@ -49,11 +49,11 @@ void swap(struct dynArray* v, int i , int j)
 	dynArrayPut(v, i, dynArrayGet(v, j));
 	dynArrayPut(v, j, temp);
 }
-```
+{% endhighlight %}
 
 The `getMin` and `removeMin` functions are pretty straightforward, following the pseudocode:
 
-```
+{% highlight c %}
 TYPE heapGetFirst(struct dynArray* heap)
 {
 	assert(dynArraySize(heap) > 0);
@@ -69,11 +69,11 @@ void heapRemoveFirst(struct dynArray* heap)
 	dynArrayRemoveAt(heap, last);
 	_adjustHeap(heap, last, 0);
 }
-```
+{% endhighlight %}
 
 Adding a value to the heap can be done using this function:
 
-```
+{% highlight c %}
 void heapAdd(struct dynArray* heap, TYPE newValue)
 {
 	assert(heap != NULL);
@@ -97,11 +97,11 @@ void heapAdd(struct dynArray* heap, TYPE newValue)
 		}
 	}
 }
-```
+{% endhighlight %}
 
 Preserving the heap order can be done using this handy `adjustHeap` function:
 
-```
+{% highlight c %}
 void adjustHeap(struct dynArray* heap, int max, int pos)
 {
 	assert(heap != NULL);
@@ -130,7 +130,7 @@ void adjustHeap(struct dynArray* heap, int max, int pos)
 		return;
 	}
 }
-```
+{% endhighlight %}
 
 In the first `if` condition, the node has two children.
 We get the index of the smallest child using `indexSmallest` and then compare the smallest child to the value at the position `pos`.

@@ -27,7 +27,7 @@ This process is actually pretty simple, but probably requires some thinking to p
 Let's code this pseudocode up in C.
 First thing we need is a helper function to iterate through the characters in the string.
 
-```
+{% highlight c %}
 char nextChar(char* s)
 {
 	static int i = -1;	
@@ -39,11 +39,11 @@ char nextChar(char* s)
 	else 
 		return c;
 }
-```
+{% endhighlight %}
 
 We'll be using this function in our main balancing function!
 
-```
+{% highlight c %}
 int isBalanced(char* s)
 {
 	assert(s != 0);
@@ -141,7 +141,7 @@ int isBalanced(char* s)
 		return 0;
 	}
 }
-```
+{% endhighlight %}
 
 This function is pretty long!
 Let's break it up into parts.
@@ -165,7 +165,7 @@ This is a classic stack application, and a great exercise.
 Here is a main function you can use to test this code.
 Try inputting different strings and see what you get!
 
-```
+{% highlight c %}
 int main(int argc, char* argv[]){
 	
 	char* s=argv[1];	
@@ -189,6 +189,6 @@ int main(int argc, char* argv[]){
 	
 	return 0;	
 }
-```
+{% endhighlight %}
 
 

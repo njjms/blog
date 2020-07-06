@@ -25,7 +25,7 @@ What the stack didn't have was the `contains` and `remove` functions.
 
 Let's implement them here~
 
-```
+{% highlight c %}
 int containsDynArr(DynArr* v, TYPE val)
 {
 	for (int i = 0; i < sizeDynArr(v); i++)
@@ -37,11 +37,11 @@ int containsDynArr(DynArr* v, TYPE val)
 	}
 	return 0;
 }
-```
+{% endhighlight %}
 
 All the `contains` function does is iterate through the dynamic array until it finds the element that we're looking for and returns a $1$ (or doesn't and returns a $0$!)
 
-```
+{% highlight c %}
 void removeDynArr(DynArr* v, TYPE val)
 {
 	assert(v != NULL);
@@ -56,7 +56,7 @@ void removeDynArr(DynArr* v, TYPE val)
 		}
 	}
 }
-```
+{% endhighlight %}
 
 The `remove` function is slightly spicier, but not by much.
 Again, the main logic is to iterate through the dynamic array until it finds an element that matches $val$ and then removes it.

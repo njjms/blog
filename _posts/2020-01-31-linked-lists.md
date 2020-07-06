@@ -19,14 +19,14 @@ Let's first understand the logic of a linked list.
 Where as a dynamic array represents a contiguous block of memory that holds values together, a linked list is more like a chain of disparate links that just point to one another.
 In C, the linked list struct is nothing more than a bunch of node structs which look like this:
 
-```
+{% highlight c %}
 struct Link
 {
 	TYPE value;
 	struct Link* next;
 	struct Link* prev;
 }
-```
+{% endhighlight %}
 
 Each link essentially has three components: a value that it holds, a pointer to the next link in the linked list, and a pointer to the previous link in the linked list.
 When we want to *traverse* a linked list, we simply start on one end and keep following the links from the next one to the next one.
@@ -35,14 +35,14 @@ In a classical linked list, one end is designated as the starting link.
 In what's called a doubly linked list, we can start at either the front or the back of the linked list.
 That's what we'll be discussing today, since it's slightly more interesting (and we need a doubly linked list to implement a deque abstract data type!)
 
-```
+{% highlight c %}
 struct LinkedList
 {
 	struct Link* frontSentinel;
 	struct Link* backSentinel;
 	int size;
 }
-```
+{% endhighlight %}
 
 The special links on ends of the doubly linked list are called **sentinels** and have no value.
 In fact, they're not technically considered *part* of the data-bearing component linked list.
@@ -51,7 +51,7 @@ The linked list also has an integer to keep track of size.
 
 Let's write a function to initialize everything in the doubly linked list.
 
-```
+{% highlight c %}
 static void init(struct LinkedList* list)
 {
 	list->frontSentinel = (struct Link*)malloc(sizeof(struct Link));
@@ -71,7 +71,7 @@ sturct LinkedList* linkedListCreate()
 	init(list);
 	return list;
 }
-```
+{% endhighlight %}
 
 This function creates our front and back sentinel and has them point to one another.
 Also since there is no data in the list yet, we set the size equal to 0.
@@ -80,7 +80,7 @@ One of the great advantages of linked lists is that adding a new value (aka addi
 All that we have to do is configure some pointers to point to our new link!
 Here is a function that will create a new link containing a given value and add it before a link in the specified linked list.
 
-```
+{% highlight c %}
 static void addLinkBefore(struct LinkedList* list, struct Link* link, TYPE val)
 {
 	assert(list != NULL);
@@ -97,7 +97,7 @@ static void addLinkBefore(struct LinkedList* list, struct Link* link, TYPE val)
 
 	list->size++;
 }
-```
+{% endhighlight %}
 
 There's a couple parts to unpack here.
 The first and the simplest is just allocating the space for the new link and setting its value.
@@ -114,7 +114,7 @@ Finally, we increase the linked list's total size by 1 and we've successfully ad
 The `removeLink` function is slightly simpler, all we have to do is configure the pointers of the surrounding links to skip over the link we are removing.
 Then we free that link.
 
-```
+{% highlight c %}
 static void removeLink(struct LinkedList* list, struct Link* link)
 {
 	assert(list != NULL);
@@ -123,7 +123,7 @@ static void removeLink(struct LinkedList* list, struct Link* link)
 	free(link);
 	list->size--;
 }
-```
+{% endhighlight %}
 
 The input `link` is the link in the list we are getting rid of, and we are simply *skipping* over it now in the linked list!
 Then we free `link` and decrement the size by 1.
@@ -132,7 +132,7 @@ A nice straightforward function :)
 Let's write two more useful functions for implementing a doubly linked list: `isEmpty` and `Print`.
 `isEmpty` will return 1 if the linked list is empty and `Print` will... well... print the values in the linked list.
 
-```
+{% highlight c %}
 int linkedListIsEmpty(struct LinkedList* deque)
 {
 	assert(deque != NULL);	
@@ -158,7 +158,7 @@ void linkedListPrint(struct LinkedList* deque)
 		printf("List is empty\n");
 	}
 }
-```
+{% endhighlight %}
 
 The `isEmpty` is fairly straightforward, but `Print` requires using a pointer (here I called it $current$) to a link and then while iterating through the linked list, moving the pointer along and printing the value.
 
@@ -169,7 +169,7 @@ It's confusing that it's not more like a queue given that the names are so simil
 
 Using the `add` function, we can write some convenient wrapper functions for the deque implementation.
 
-```
+{% highlight c %}
 void linkedListAddFront(struct LinkedList* deque, TYPE value)
 {
 	assert(deque != 0);
@@ -181,12 +181,12 @@ void linkedListAddBack(struct LinkedList* deque, TYPE value)
 	assert(deque != 0);
 	addLinkBefore(deque, deque->backSentinel, value);
 }
-```
+{% endhighlight %}
 
 We should also have two `remove` functions for the deque, which again is pretty easy given the helpful doubly linked list functions we've written already.
 Remember that a deque is like a double ended stack, so we can only remove from the front and the back.
 
-```
+{% highlight c %}
 void linkedListRemoveFront(struct LinkedList* deque)
 {
 	assert(deque != NULL);
@@ -198,11 +198,11 @@ void linkedListRemoveBack(struct LinkedList* deque)
 	assert(deque != NULL);
 	removeLink(deque, deque->backSentinel->prev);
 }
-```
+{% endhighlight %}
 
 Similar to `pop` in the stack implementation, we can look at the front and rear elements of the deque (but not remove them!) with these functions:
 
-```
+{% highlight c %}
 TYPE linkedListFront(struct LinkedList* deque)
 {
 	assert(deque != 0);
@@ -216,12 +216,12 @@ TYPE linkedListBack(struct LinkedList* deque)
 	assert(!linkedListIsEmpty(deque));
 	return deque->backSentinel->prev->value;
 }
-```
+{% endhighlight %}
 
 Finally, let's write a function for destroying the linked list.
 Destroying a linked list is easy now with this `linkedListIsEmpty` function.
 
-```
+{% highlight c %}
 void linkedListDestroy(struct LinkedList* list)
 {
 	assert(list != NULL);
@@ -235,7 +235,7 @@ void linkedListDestroy(struct LinkedList* list)
 	free(list);
 	list = NULL;
 }
-```
+{% endhighlight %}
 
 ## Bag Implementation using a Doubly Linked List
 
@@ -250,20 +250,20 @@ We have already implemented `add` with our previous functions, in fact, we can u
 
 Here I basically just rewrote `addFront`, just giving it a different name.
 
-```
+{% highlight c %}
 void linkedListAdd(struct LinkedList* bag, TYPE val)
 {
 	assert(bag != NULL);
 	addLinkBefore(bag, bag->frontSentinel->next, value);
 }
-```
+{% endhighlight %}
 
 The `remove` and `contains` function however still need to be implemented.
 They are a little tricky, but we should be able to tackle them!
 
 Let's begin by writing the `contains` function.
 
-```
+{% highlight c %}
 int linkedListContains(struct LinkedList* bag, TYPE value)
 {
  	assert(bag != NULL);
@@ -280,7 +280,7 @@ int linkedListContains(struct LinkedList* bag, TYPE value)
 	}
 	return 0;
 }
-```
+{% endhighlight %}
 
 Note the use of a `while` loop to iterate through the entire linked list.
 I also make use of a function I defined in the preprocessor `EQ(a, b)` which returns 1 if the elements are equal and 0 if they are not.
@@ -293,7 +293,7 @@ Good stuff!
 Let's implement the `remove` function next.
 It's pretty close in terms of structure.
 
-```
+{% highlight c %}
 void linkedListRemove(struct LinkedList* bag, TYPE value)
 {
 	assert(bag != NULL);
@@ -312,7 +312,7 @@ void linkedListRemove(struct LinkedList* bag, TYPE value)
 	printf("Value not found\n");
 	return;
 }
-```
+{% endhighlight %}
 
 Note that in this implementation of `remove`, we remove the first instance of the value that we find, **not** all the links in the list that have that value.
 That's why we call `return;` after the `removeLink(bag, current);` line.

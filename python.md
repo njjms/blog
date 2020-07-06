@@ -344,9 +344,10 @@ Some initial ideas:
 	+ Building a heap is $O(n)$ complexity so this entire solution will be $O(n)$. In Python, we can use the `heapq` standard library.
 
 {% highlight python %}
+from heapq import heapify, heappop
+
 def findKthlargest(nums, k):
-	from heapq import heapify, heappop
-	numheap = heapify(nums)
+	heapify(nums)
 	for _ in range(k-1):
 		heappop(numheap)
 	return(heapop(numheap))
@@ -427,3 +428,70 @@ def kthfib(n):
 		return sum
 {% endhighlight %}
 
+# Longest Consecutive Sequence
+
+Given an array of integers, return the length of the longest sequence of consecutive integers.
+For example, if our input is `[1, 100, 2, 3, 4, 500]`, then our output would be 4 since that is the length of `[1, 2, 3, 4]`.
+
+The easy way to solve this problem in $O(n log n)$ time is to remove duplicates and sort the array first, then going through the array in order while checking consecutive integers.
+While we are iterating through the array, we keep track of our current sequence and the longest sequence.
+That solution might look something like this.
+
+{% highlight python %}
+from heapq import heapify
+def longestConsecutiveSequence(nums):
+	nums = list(set(nums))
+	heapify(nums)
+
+	longestSeq = []
+	currentSeq = []
+	for i in range(len(nums)):
+		if (len(currentSeq)) == 0:
+			currentSeq.append(nums[i])
+		else:
+			if nums[i-1] == nums[i] - 1:
+				currentSeq.append(nums[i])
+			else:
+				if len(currentSeq) > len(longestSeq):
+					longestSeq = currentSeq
+				currentSeq = [nums[i]]
+
+	return(len(longestSeq))
+{% endhighlight %}
+
+This solution is quasilinear because we need to sort the list first.
+
+Another solution which will run in linear time is turn the array into a hash set first.
+Again, in Python the implementation of this abstract data type would be a dictionary.
+In my solution, the hash will be just the integer itself.
+Creating the hash set can be done with a dictionary comprehension in $O(n)$ time.
+
+{% highlight python %}
+def longestConsecutiveSequence(nums):
+	num_dict = {k:k for k in nums}
+	lengthLongest = 0
+	lengthCurrent = 1
+	alreadyChecked = []
+	for k in num_dict.keys():
+		if k+1 not in alreadyChecked:
+			try:
+				alreadyChecked.append(num_dict[k+1])
+				lengthCurrent += 1
+			except:
+				if lengthCurrent > lengthLongest:
+					lengthLongest = lengthCurrent
+				lengthCurrent = 1
+		else:
+			continue
+	
+	return(lengthLongest)
+{% endhighlight %}
+
+When we use the above Python code to create a dictionary, it automatically creates a "sorted" dictionary aka `{0: 0, 1: 1, 2: 2, ..., 100: 100}`.
+However, this sorting is not necessary since the dictionary can support constant time lookup and that is the **key piece** we want to have for this problem.
+
+At every iteration $k$, we try to access the $k+1$ element in the dictionary.
+If it is there, then the sequence continues.
+We also add the element to a list to indicate we have already checked it, since otherwise we might end up repeatedly checking the same sequences.
+
+If $k+1$ element is not there, then the current sequence is over and we can start the new sequence.

@@ -20,7 +20,7 @@ In order to do this, we will need to maintain two values:
 
 As always, let's start off with the struct:
 
-```
+{% highlight c %}
 struct deque
 {
 	TYPE* data;
@@ -28,14 +28,14 @@ struct deque
 	int size;
 	int beg;
 };
-```
+{% endhighlight %}
 
 The two values `beg` and `size` are the respective integers we stated up above.
 
 
 Setting the capacity for the dynamic array deque will be similar to the regular dynamic array stack, but with some tweaks.
 
-```
+{% highlight c %}
 void _dequeSetCapacity(struct deque* d, int newCap)
 {
 	assert(d != NULL);
@@ -60,14 +60,14 @@ void _dequeSetCapacity(struct deque* d, int newCap)
 	d->capacity = newCap;
 	d->beg = 0;
 }
-```
+{% endhighlight %}
 
 Notice here that when we copy over to the new array, **we start at 0** even if the current beginning is some other integer.
 Also notice that if $j$ exceeds the current capacity of the deque, that means we have to wrap around the end of the deque and start at 0.
 
 Now that we have our first function, let's initialize this bad boy.
 
-```
+{% highlight c %}
 void dequeInit(struct deque* d, int initCapacity)
 {
 	assert(initCapacity > 0);
@@ -77,12 +77,12 @@ void dequeInit(struct deque* d, int initCapacity)
 	d->data = (TYPE *)malloc(sizeof(TYPE)*initCapacity);
 	assert(d->data != NULL);
 }
-```
+{% endhighlight %}
 
 Now we can implement the `add`, `remove`, `Front`, and `Back` functions!
 The only trick that we have to remember is catching the condition when we have to wrap around the ends of the memory block.
 
-```
+{% highlight c %}
 int dequeSize(struct deque* d)
 {
 	return d->size;
@@ -122,7 +122,7 @@ void dequeAddBack(struct deque* d, TYPE newValue)
 	d->data[index] = newValue;
 	d->size++;
 }
-```
+{% endhighlight %}
 
 For the `addFront` function, the key was decrementing the `d->beg` value first and checking to see if it was negative, meaning `d->beg` was 0.
 If it was, that means we have to wrap around to the end of the memory block.
@@ -130,7 +130,7 @@ If it was, that means we have to wrap around to the end of the memory block.
 For the `addBack` function, we had to define an integer `index` which was equal to `d->beg + d->size` since this would give us the index of the next open spot in the memory block.
 However, if this `index` is greater than the capacity of the array, we have to wrap around to the front of the block.
 
-```
+{% highlight c %}
 void dequeRemoveFront(struct deque* d)
 {
 	assert(d != NULL);
@@ -149,7 +149,7 @@ void dequeRemoveBack(struct deque* d)
 	assert(d->size > 0);
 	d->size--;	
 }
-```
+{% endhighlight %}
 
 The `remove` functions are also slightly different depending on whether we are removing from the front or removing from the back.
 
@@ -164,7 +164,7 @@ If we know how to work with `d->beg` and `d->size` to clip the front or back of 
 
 Finally, we have `Front` and `Back`, which are pretty easy!
 
-```
+{% highlight c %}
 TYPE dequeFront(struct deque* d)
 {
 	assert(d != NULL);
@@ -184,7 +184,7 @@ TYPE dequeBack(struct deque* d)
 
 	return d->data[index];
 }
-```
+{% endhighlight %}
 
 And there we have it!
 A *dynamic array deque*!
