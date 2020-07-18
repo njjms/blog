@@ -495,3 +495,46 @@ If it is there, then the sequence continues.
 We also add the element to a list to indicate we have already checked it, since otherwise we might end up repeatedly checking the same sequences.
 
 If $k+1$ element is not there, then the current sequence is over and we can start the new sequence.
+
+# Finding the first k prime numbers
+
+For this particular problem, I didn't look for an efficient solution, just **a solution** :P
+
+This function just does a brute force search on every candidate number $i$.
+If a number is found to be divisible by a smaller number, the number is marked as **not prime**.
+
+{% highlight python %}
+def first_k_primes(n):
+	guess = 2
+	output_list = [guess]
+	while len(output_list) < n:
+		is_prime = True
+		guess += 1
+		for j in range(2, (guess // 2) + 1, 1):
+			if guess % j == 0:
+				is_prime = False
+		if is_prime:
+			output_list.append(guess)
+	return(output_list)
+{% endhighlight %}
+
+# Sieve of Eratosthenes
+
+This is a cool algorithm to know (and it's pretty simple to code)!
+
++ Create a list of candidate numbers and an empty list for known primes
++ Let $p$ equal 2, the smallest prime number
++ Remove all multiples of $p$ from the list of numbers and add $p$ itself to a known primes
++ Set $p$ equal to the smallest number in the candidate list and repeat
++ The algorithm terminates when the candidate list is empty
+
+{% highlight python %}
+def eratosthenes(n):
+	search = list(range(2, n))
+	primes = []
+	while len(search) > 0:
+		p = search[0]
+		primes.append(p)
+		search = [s for s in search if not (s/p).is_integer()]
+	return(primes)
+{% endhighlight %}
