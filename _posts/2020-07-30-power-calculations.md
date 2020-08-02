@@ -5,6 +5,10 @@ date:   2020-07-30 23:07:28 +0000
 categories: [statistics]
 ---
 
+<center>
+<img src="/assets/unlimited_power.gif">
+</center>
+
 # Introduction
 
 I had an interview recently for a statistician position which would entail a lot of power and sample size calculations.
@@ -32,6 +36,10 @@ This number of success will be distributed according to the binomial distributio
 Most introductory statistics classes test proportions using a z-test, but the binomial test has the advantage of not using a normal approximation, hence it is more "exact".
 In fact, according to [Karlin-Rubin](https://en.wikipedia.org/wiki/Uniformly_most_powerful_test) the binomial theorem is the uniformly most powerful test for a single proportion!
 In some cases, this is advantageous!
+
+$$
+\frac{L(H_0)}{L(H_A)} = \left(\frac{p_0 (1-p_1)}{p_1 (1 - p_0)}\right)^{\sum x_i} \left(\frac{1-p_0}{1-p_1}\right)^n
+$$
 
 We select the rejection region for the test statistic $\sum x_i$ such that $P(\sum x_i \in R \lvert H_0) \leq \alpha$.
 If our alternative hypothesis is $H_A: p > p_0$, then we will reject the null hypothesis for large values of $\sum x_i$.
@@ -74,4 +82,59 @@ n.binomial.test <- function(delta, null.prob = 1/6, req.power = .9, alpha = .05,
 }
 {% endhighlight %}
 
+# 1-prop z test
+
+What if we wanted to do this for a one proportion z-test instead of a binomial test?
+Finding the requisite sample size to get a certain power gets a little more complicated in terms of math, compared to just trying a bunch of sample sizes on a computer.
+However, it's still not too difficult!
+
+Let's again consider a null proportion $p_0$ and a true proportion $p = p_0 + \delta$.
+The general idea is that we want to find the sample size $n$ that sets the $1-\alpha$% quantile of the distribution under the null hypothesis to equal to $1-\text{ power}$% quantile of the distribution under the true value of $p$ (or alternatively, the power% quantile if $\delta < 0$).
+
+$$
+p_0 + z_{\alpha/2} \sqrt{\frac{p_0(1-p_0)}{n}} = p + z_{1-\beta} \sqrt{\frac{p(1-p)}{n}}
+$$
+
+Doing a little algebra to figure out a formula for $n$ gives us.
+
+$$
+\rightarrow n = \left( \frac{z_{1-\beta} \sqrt{p(1-p} - z_{\alpha / 2} \sqrt{p_0 (1-p_0)}}{p_0 - p} \right)^2
+$$
+
+For a very small $\delta$, the sample size required to get the desired power can get infeasibly large.
+If we are constrained by budgets or practicality, we might have a maximum possible sample size $n_{\text{max}}$.
+It is possible that the sample sizes available to us do not achieve the desired power without some adjustment in other factors, like $\alpha$.
+Graphically, this would appear as the quantile functions failing to intersect.
+
+When writing an **R** function to calculate sample size, we can incorporate this as a check for whether or not we can actually reach power, given our constraints.
+It might look something like this:
+
+{% highlight R %}
+n.calc <- function(p0 = 1/6, alpha = .05, power = .9, nmax = 1000, delta) {
+	p <- p0 + delta
+	za <- qnorm(1-alpha)
+	zb <- qnorm(1-power)
+	x <- seq(1, nmax, 1)
+	q1 <- p0+za*sqrt(p0*(1-p0)/x)
+	q2 <- p+zb*sqrt(p*(1-p)/x)
+	if (which.min(abs(q1 - q2)) == nmax) {
+		stop("No intersection of quantile functions")
+	}
+	n <- ((zb*sqrt(p*(1-p)) - za*sqrt(p0*(1-p0)))/(p0-p))^2
+	return(round(n))
+}
+{% endhighlight %}
+
+The *if* block of this function checks for the intersection of the quantile functions.
+We could have just reported this intersection as our sample size instead of calculating using our formula, but otherwise we did that algebra for nothing so :/
+
 ![](/assets/interviews/quantile_curves.PNG)
+<center>
+The curves of the quantiles as functions of n. Where they intersect is the sample size we want!
+</center>
+
+# Conclusion
+
+I only explored tests of proportion in this post, but we could easily replicate this general prodedure for a t-test or z-test of a population mean!
+The key idea here is to think of power calculations in the context of quantiles in different distributions.
+Once you have that conceptual framework in place, power calculations become a lot friendlier!
