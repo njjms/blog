@@ -1,4 +1,5 @@
-_site
+.ssh/
+_site/
 .sass-cache
 .jekyll-metadata
 *.pdf
@@ -6,3 +7,4 @@ _site
 *.jpg
 *.swp
 *.swo
+
