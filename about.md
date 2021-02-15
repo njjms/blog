@@ -23,7 +23,11 @@ While I don't actually play any sports, I do watch a lot of college football and
 
 Here is an intentionally pretentious picture of me.
 
-<img src="/assets/gross.jpg" alt="intentionally pretentious is still pretentious" width="300px" height="400px">
+<center>
+  <img src="/assets/Rutgers_Flag.gif">
+  <img src="/assets/gross.jpg" alt="intentionally pretentious is still pretentious" width="300px" height="400px">
+  <img src="/assets/Oregon_State_Flag.gif">
+</center>
 
 [My github]: https://github.com/njjms
 [email]: sunn@oregonstate.edu
