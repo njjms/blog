@@ -44,7 +44,7 @@ The relevant columns from these two datasets are the name of the university, nam
 
 To get the scraping data, I instantiated a `praw.Reddit` object using my Reddit credentials and a Python function to search for both "ochem" and "orgo" in each school subreddit.
 
-```
+{% highlight python %}
 reddit = praw.Reddit(client_id="cliend_id_I_used",
                      client_secret="client_secret_I_used",
                      password="my_password",
@@ -55,23 +55,23 @@ print(reddit.read_only)
 reddit.read_only = True
 
 print(reddit.user.me())
-```
+{% endhighlight %}
 
 This last line should print out your reddit user name.
 Of course I won't be providing that here (what kind of maniac would publicly give out their reddit username?).
 
 I then wrote a function which takes the name of a subreddit and a search string, then outputs the number of posts returned in a search of that subreddit.
 
-```
+{% highlight python %}
 def search_college_subreddit(subreddit, search_string, limit=1000):
     output = len(list(reddit.subreddit(subreddit).search(search_string, limit = limit)))
     return output
-```
+{% endhighlight %}
 
 I looped over each school subreddit, executing my function each time and saving the results which I then joined back on to dataframe.
 My code looked something like this:
 
-```
+{% highlight python %}
 ochem_counts = []
 
 for name, subreddit in zip(college_df['name'], college_df['subreddit']):
@@ -82,7 +82,7 @@ for name, subreddit in zip(college_df['name'], college_df['subreddit']):
     except:
         print("Error with university {}".format(name))
         ochem_counts.append(0)
-```
+{% endhighlight %}
 
 I then used `pandas` to create a final column `organic_chemistry_name` which put schools into one of 4 categories:
 
@@ -93,23 +93,23 @@ I then used `pandas` to create a final column `organic_chemistry_name` which put
 
 # Let's make a map
 
-I am using `R` for this since it has a easy to use package `usmaps` for creating maps of the United States. In this section, I will present what data visualization that I used to answer the three questions of interest, and the final answer of those questions will be discussed in the next section as interpretation of the data.
+I am using `R` for this since it has a easy to use package `usmaps` for creating maps of the United States. In this section, I will present what data visualization that I used to answer the question of interest, and the final answer of those questions will be discussed in the next section as interpretation of the data.
 
-``` 
+{% highlight r %}
 library(usmap)
 library(ggrepel)
 data_to_plot <- final_df[,c("LON", "LAT", "name", "orgo_counts", "ochem_counts", "organic_chemistry_name")]
 data_to_plot$total_chemistry <- data_to_plot$ochem_counts + data_to_plot$orgo_counts
 data_to_plot$more_popular <- if_else(data_to_plot$total_chemistry >= data_to_plot$football_counts, "Chemistry", "Football")
 data_transformed <- usmap_transform(data_to_plot)
-```
+{% endhighlight %}
 
 In the one final map where the points are colored according to the which slang term for organic chemistry is more popular.
 I also added a size aesthetic to capture how many total posts about chemistry the subreddit had.
 
 The final `ggplot`code will look something like this (note that I filtered out the "no counts available" category):
 
-```
+{% highlight r %}
 plot_usmap() +
 	geom_point(data_transformed, mapping = aes(x = LON.1, y = LAT.1),
 			   size = .2) +
@@ -120,7 +120,7 @@ plot_usmap() +
 		 color = "Organic Chemistry is...",
 		 size = "Total Chemistry Posts") +
 	theme(legend.position = "right")
-```
+{% endhighlight %}
 
 And here it is, the long-awaited map of slang names for organic chemistry:
 
